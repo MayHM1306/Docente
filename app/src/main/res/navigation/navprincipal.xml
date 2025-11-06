@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navprincipal"
+    app:startDestination="@id/splashh">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.itsoeh.hmmayte.docente.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_menuu"
+            app:destination="@id/menuu" />
+        <action
+            android:id="@+id/action_login_to_autoRegistroo"
+            app:destination="@id/autoRegistroo" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashh"
+        android:name="com.itsoeh.hmmayte.docente.Splashh"
+        android:label="fragment_splashh"
+        tools:layout="@layout/fragment_splashh" >
+        <action
+            android:id="@+id/action_splashh_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuu"
+        android:name="com.itsoeh.hmmayte.docente.Menuu"
+        android:label="fragment_menuu"
+        tools:layout="@layout/fragment_menuu" >
+        <action
+            android:id="@+id/action_menuu_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/autoRegistroo"
+        android:name="com.itsoeh.hmmayte.docente.AutoRegistroo"
+        android:label="fragment_auto_registroo"
+        tools:layout="@layout/fragment_auto_registroo" >
+        <action
+            android:id="@+id/action_autoRegistroo_to_login"
+            app:destination="@id/login" />
+    </fragment>
+</navigation>

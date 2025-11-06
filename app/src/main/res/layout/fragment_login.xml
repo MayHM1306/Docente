@@ -1,0 +1,131 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/azul_uno">
+
+    <!-- VIDEO SUPERIOR -->
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" />
+
+    <!-- ONDA ENCIMA DEL VIDEO -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/fusion_ondas_dos"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:layout_marginTop="150dp"/>
+
+    <!-- Contenedor de elementos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center_horizontal"
+        android:layout_margin="25dp">
+
+        <!-- Icono de Usuario -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="30sp"
+            android:src="@drawable/login_icono_usuario"/>
+
+        <!-- Input de correo electrónico -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo"
+            style="@style/EstiloInputBlanco"
+            app:startIconDrawable="@android:drawable/ic_dialog_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blanco"
+                android:layout_marginBottom="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Input de correo password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            style="@style/EstiloInputBlanco"
+            app:startIconDrawable="@android:drawable/ic_lock_lock"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/blanco">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/blanco" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Recuoerar contraseña -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Olvidaste tu contraseña?"
+            android:id="@+id/login_recuperarContraseña"
+            android:fontFamily="@font/applegaramond"
+            android:textAlignment="textEnd"
+            android:textColor="@color/azul_cuatro"
+            android:textSize="22sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="50sp"
+            />
+
+        <!-- Botón de inicio de sesión -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginVertical="40sp"
+            >
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/login_btnentrar"
+                android:clickable="true"
+                android:focusable="true"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/azul_cuatro"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iniciar Sesión"
+                        android:fontFamily="@font/robotobold"
+                        android:textColor="@color/blanco"
+                        android:textSize="22sp"
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

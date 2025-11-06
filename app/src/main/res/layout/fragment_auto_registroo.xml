@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gris_tres"
+    tools:context=".AutoRegistroo">
+
+    <!-- ONDA SUPERIOR -->
+    <LinearLayout
+        android:id="@+id/onda_superior"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/fusion_ondas_tres"
+        android:orientation="vertical"
+        android:layout_gravity="top" />
+
+    <!-- CONTENEDOR PARA FOTO DE USUARIO -->
+    <RelativeLayout
+        android:id="@+id/foto_flotante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="50dp"
+        android:elevation="20dp">
+
+        <ImageView
+            android:id="@+id/sombra_usuario"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/perfil_foto_usuario"
+            android:layout_marginTop="-5dp"
+            android:src="@drawable/sombra_oval"
+            android:alpha="0.40"/>
+
+        <ImageView
+            android:id="@+id/perfil_foto_usuario"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:padding="6dp"
+            android:src="@drawable/perfil_icono_usuario"
+            android:scaleType="centerCrop"
+            android:elevation="12dp"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contenedor_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
+            android:paddingHorizontal="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- TÍTULO -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Docente"
+                    android:textAlignment="center"
+                    android:textSize="28sp"
+                    android:textColor="@color/azul_cuatro"
+                    android:fontFamily="@font/robotobold"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Número de Docente -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número de Docente"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/docente_perfil_icono_numero">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_numero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Nombre del Docente -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del Docente"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/icono_nombre">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Apellido Paterno -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellido Paterno"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/icono_nombre">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Apellido Materno -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellido Materno"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/icono_nombre">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_apm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Correo -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/icono_correo">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_correo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Contraseña -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/icono_contrasenia"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/azul_cuatro">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Estado -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Estado (0 activo / 1 inactivo)"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/docente_perfil_icono_estado">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_spestado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Género -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Género"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/docente_perfil_icono_genero">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_genero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Grado -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Grado"
+                    style="@style/EstiloInputAzul"
+                    app:startIconDrawable="@drawable/docente_perfil_icono_grado">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_grado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/azul_cuatro"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- BOTÓN GUARDAR -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="40dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/reg_btnguardar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="4dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:background="@drawable/degradado_boton"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Guardar"
+                                android:fontFamily="@font/robotobold"
+                                android:textColor="@color/blanco"
+                                android:textSize="22sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

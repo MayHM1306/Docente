@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Color de fondo (blanco) -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Borde sutil gris o azul muy claro -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/borde_azul" />
+
+    <!-- Pequeña sombra interior para dar relieve -->
+    <padding
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp" />
+</shape>

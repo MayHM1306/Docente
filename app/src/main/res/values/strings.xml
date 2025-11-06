@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EduVerse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="abrir_men">abrir</string>
+    <string name="cerrar_men">cerrar</string>
+    <string name="desc_lugar">EduVerse</string>
+</resources>

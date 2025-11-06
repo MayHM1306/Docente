@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Enfocado -->
+    <item android:color="@color/azul_cuatro" android:state_focused="true"/>
+    <!-- No enfocado -->
+    <item android:color="@color/azul_cuatro"/>
+</selector>

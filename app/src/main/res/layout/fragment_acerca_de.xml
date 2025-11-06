@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gris_tres"
+    tools:context=".AcercaDe">
+
+        <!-- ONDA SUPERIOR -->
+        <LinearLayout
+            android:id="@+id/onda_superior"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/fusion_ondas_tres"
+            android:orientation="vertical"
+            android:layout_gravity="top" />
+
+        <!-- LOGO PROYECTO (flotante) -->
+        <RelativeLayout
+            android:id="@+id/logo_proyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="15dp"
+            android:elevation="20dp">
+
+            <ImageView
+                android:id="@+id/logo_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo_eduverse"
+                android:scaleType="centerCrop"
+                android:background="@drawable/borde_circular_blanco"
+                android:elevation="10dp" />
+        </RelativeLayout>
+
+        <!-- TARJETA PRINCIPAL: ocupa el espacio principal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contenedor_principal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@android:color/white">
+
+            <!-- Usamos Linear + ScrollView. IMPORTANTE: damos paddingBottom equivalente al área del botón -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="110dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <ScrollView
+                android:id="@+id/scroll_contenido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/titulo_desarrolladores"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Desarrolladores del Proyecto"
+                        android:textColor="@color/azul_cuatro"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/robotobold"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Item 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/foto_desarrollador1"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/borde_circular_blanco" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/nombre_dev1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mayte Hernández"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/azul_cuatro"
+                                android:fontFamily="@font/vogue" />
+
+                            <TextView
+                                android:id="@+id:rol_dev1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Desarrolladora principal"
+                                android:textSize="14sp"
+                                android:textColor="@color/gris_uno" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Item 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/foto_desarrollador2"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/borde_circular_blanco" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DEYSI MARTIN"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/azul_cuatro"
+                                android:fontFamily="@font/vogue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Diseñador UI/UX"
+                                android:textSize="14sp"
+                                android:textColor="@color/gris_uno" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Item 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/foto_desarrollador3"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/borde_circular_blanco" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MARIBEL MATURANO"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/azul_cuatro"
+                                android:fontFamily="@font/vogue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tester / Documentación"
+                                android:textSize="14sp"
+                                android:textColor="@color/gris_uno" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Item 4 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/foto_desarrollador3"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/borde_circular_blanco" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DANIEL HERNÁNDEZ"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/azul_cuatro"
+                                android:fontFamily="@font/vogue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tester / Documentación"
+                                android:textSize="14sp"
+                                android:textColor="@color/gris_uno" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Item 4 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/foto_desarrollador3"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/borde_circular_blanco" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="JOSE JIMENEZ"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/azul_cuatro"
+                                android:fontFamily="@font/vogue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tester / Documentación"
+                                android:textSize="14sp"
+                                android:textColor="@color/gris_uno" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gracias por usar nuestro sistema"
+                        android:textColor="@color/gris_uno"
+                        android:textSize="14sp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:fontFamily="@font/applegaramond" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- BOTÓN FIJO ABAJO (fuera de la CardView para que siempre quede visible) -->
+    <LinearLayout
+        android:id="@+id/layout_guardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/degradado_boton"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/btn_volver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volver"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/blanco"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</FrameLayout>

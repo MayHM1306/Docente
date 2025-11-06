@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FloatingHintWhite" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+
+    <style name="EstiloInputBlanco" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="boxBackgroundMode">outline</item>
+
+        <!-- Bordes -->
+        <item name="boxStrokeColor">@color/borde_blanco</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+
+        <!-- Hint normal -->
+        <item name="android:textColorHint">@color/blanco</item>
+
+        <!-- ✅ Hint flotante (collapsed) blanco -->
+        <item name="hintTextColor">@color/hint_blanco</item>
+
+        <!-- Hint flotante (textAppearance) -->
+        <item name="hintTextAppearance">@style/FloatingHintWhite</item>
+
+        <!-- Texto del input -->
+        <item name="android:textColor">@color/blanco</item>
+
+        <!-- Iconos, placeholder -->
+        <item name="colorOnSurface">@color/blanco</item>
+        <item name="colorControlNormal">@color/blanco</item>
+        <item name="startIconTint">@color/blanco</item>
+        <item name="placeholderTextColor">@color/blanco</item>
+
+    </style>
+
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="fontFamily">@font/robotoboitalic</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="FloatingHintBlue" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/azul_cuatro</item>
+    </style>
+
+
+    <style name="EstiloInputAzul" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="boxBackgroundMode">outline</item>
+
+        <!-- Bordes -->
+        <item name="boxStrokeColor">@color/borde_azul</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+
+        <!-- Hint normal -->
+        <item name="android:textColorHint">@color/azul_cuatro</item>
+
+        <!-- ✅ Hint flotante (collapsed) blanco -->
+        <item name="hintTextColor">@color/hint_azul</item>
+
+        <!-- Hint flotante (textAppearance) -->
+        <item name="hintTextAppearance">@style/FloatingHintBlue</item>
+
+        <!-- Texto del input -->
+        <item name="android:textColor">@color/azul_cuatro</item>
+
+        <!-- Iconos, placeholder -->
+        <item name="colorOnSurface">@color/azul_cuatro</item>
+        <item name="colorControlNormal">@color/azul_cuatro</item>
+        <item name="startIconTint">@color/azul_cuatro</item>
+        <item name="placeholderTextColor">@color/azul_cuatro</item>
+
+    </style>
+
+
+    <style name="EstiloInputAzul.Exposed" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <!-- Heredando todo lo que tienes en EstiloInputAzul -->
+        <item name="boxBackgroundMode">outline</item>
+
+        <!-- Bordes -->
+        <item name="boxStrokeColor">@color/borde_azul</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+
+        <!-- Hint -->
+        <item name="android:textColorHint">@color/azul_cuatro</item>
+        <item name="hintTextColor">@color/hint_azul</item>
+        <item name="hintTextAppearance">@style/FloatingHintBlue</item>
+
+        <!-- Texto del input -->
+        <item name="android:textColor">@color/azul_cuatro</item>
+
+        <!-- Iconos y placeholder -->
+        <item name="colorOnSurface">@color/azul_cuatro</item>
+        <item name="colorControlNormal">@color/azul_cuatro</item>
+        <item name="startIconTint">@color/azul_cuatro</item>
+        <item name="placeholderTextColor">@color/azul_cuatro</item>
+
+    </style>
+
+
+
+
+
+
+
+
+
+</resources>

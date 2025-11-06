@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="600dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="600">
+
+    <group
+        android:rotation="180"
+        android:pivotX="540"
+        android:pivotY="300">
+
+        <!-- Onda con degradado -->
+        <path
+            android:pathData="M0,0
+                              H1080
+                              V490
+                              C900,250 700,405 400,550
+                              C250,600 100,600 0,550
+                              Z">
+
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="0"
+                    android:startY="0"
+                    android:endX="1000"
+                    android:endY="1500"
+                    android:startColor="@color/azul_dos"
+                    android:endColor="@color/azul_tres"/>
+            </aapt:attr>
+
+        </path>
+    </group>
+
+</vector>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanco">
+
+    <!-- ONDA SUPERIOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/fusion_ondas"
+        android:orientation="vertical"
+        android:layout_gravity="top" />
+
+    <!-- ONDA INFERIOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/fusion_ondas_dos"
+        android:orientation="vertical"
+        android:layout_gravity="bottom" />
+
+    <!-- CONTENIDO CENTRADO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logoEduverse"
+            android:layout_width="170dp"
+            android:layout_height="180dp"
+            android:src="@drawable/logo_eduverse" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDUVERSE"
+            android:textColor="@color/negro"
+            android:fontFamily="@font/vogue"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</FrameLayout>

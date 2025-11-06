@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/azul_uno">
+
+    <!-- IMAGEN IZQUIERDA, CENTRADA VERTICALMENTE -->
+    <!-- CONTENEDOR DE LA FOTO + SOMBRA -->
+    <RelativeLayout
+        android:id="@+id/cont_foto_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_centerVertical="true">
+
+        <!-- SOMBRA FLOTANTE -->
+        <ImageView
+            android:id="@+id/sombra_usuario"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/encanezado_foto_usuario"
+            android:layout_marginTop="-10dp"
+            android:src="@drawable/sombra_oval" />
+
+        <!-- FOTO DEL USUARIO -->
+        <ImageView
+            android:id="@+id/encanezado_foto_usuario"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/encabezado_icono_usuario"
+            android:scaleType="centerInside"
+            android:padding="10dp"/>
+    </RelativeLayout>
+
+
+
+
+    <!-- NOMBRE DEL USUARIO A LA DERECHA DE LA IMAGEN -->
+    <TextView
+        android:id="@+id/encabezado_txtnombreusuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/cont_foto_usuario"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/dunkinsans"
+        android:text="Nombre de Usuario"
+        android:textColor="@color/blanco"
+        android:textSize="18sp" />
+
+    <!-- CORREO ABAJO DEL NOMBRE -->
+    <TextView
+        android:id="@+id/encabezado_txtcorreousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/encabezado_txtnombreusuario"
+        android:layout_alignStart="@id/encabezado_txtnombreusuario"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/robotocondensed"
+        android:text="email@itsoeh.edu.mx"
+        android:textColor="@color/blanco"
+        android:textSize="14sp" />
+
+    <!-- ÍCONO PARA MODIFICAR EL PERFIL DEL USUARIO -->
+    <ImageView
+        android:id="@+id/encabezado_icono_modificar_perfil_usuario"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/encabezado_icono_modificar_perfil_usuario" />
+
+</RelativeLayout>

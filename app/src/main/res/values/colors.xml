@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Colores negros -->
+    <color name="negro">#FF000000</color>
+    <color name="blanco">#FFFFFFFF</color>
+
+    <!-- Colores azules -->
+
+    <color name="azul_seis">#1b4161</color>
+    <color name="azul_uno">#224f7f</color>
+    <color name="azul_siete">#25669c</color>
+    <color name="azul_tres">#004aad</color>
+    <color name="azul_dos">#5de0e6</color>
+    <color name="azul_cinco">#54acbf</color>
+    <color name="azul_cuatro">#94b8d7</color>
+
+    <!-- Colores grises -->
+    <color name="gris_uno">#b4b4b4</color>
+    <color name="gris_dos">#f2f2f2</color>
+    <color name="gris_tres">#fafafa</color>
+
+</resources>

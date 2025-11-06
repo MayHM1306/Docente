@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/perfil"
+        >
+        <item
+            android:id="@+id/menu_perfilDocente"
+            android:icon="@drawable/menu_icono_perfil_docente"
+            android:title="Docente" />
+        <item
+            android:id="@+id/menu_perfilAlumno"
+            android:icon="@drawable/menu_icono_perfil_alumno"
+            android:title="Alumno" />
+    </group>
+    <group
+        android:id="@+id/estado"
+        >
+        <item
+            android:id="@+id/menu_estadoGrupos"
+            android:icon="@drawable/menu_icono_estado_grupos"
+            android:title="Grupos" />
+
+        <item
+            android:id="@+id/menu_estadoInscripciones"
+            android:icon="@drawable/menu_icono_estado_inscripcion"
+            android:title="Inscripciones" />
+    </group>
+
+    <group
+        android:id="@+id/grafica"
+        >
+        <item
+            android:id="@+id/menu_graficasGenerales"
+            android:icon="@drawable/menu_icono_graficas"
+            android:title="Graficas Generales" />
+    </group>
+
+    <group
+        android:id="@+id/riesgos"
+        >
+        <item
+            android:id="@+id/menu_alumnosEnRiesgo"
+            android:icon="@drawable/menu_icono_alumnos_riesgos"
+            android:title="Alumnos en Riesgo" />
+    </group>
+
+    <item
+        android:id="@+id/menu_salir"
+        android:icon="@drawable/menu_icono_salir"
+        android:title="Salir" />
+
+</menu>
