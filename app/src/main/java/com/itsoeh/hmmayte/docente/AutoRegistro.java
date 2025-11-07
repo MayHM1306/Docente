@@ -113,7 +113,7 @@ public class AutoRegistro extends Fragment {
         txtApm=view.findViewById(R.id.reg_apm);
         txtCorreo=view.findViewById(R.id.reg_correo);
         txtPass=view.findViewById(R.id.reg_pass);
-        txtEstado=view.findViewById(R.id.reg_spestado);
+        txtEstado=view.findViewById(R.id.reg_estado);
         txtGenero=view.findViewById(R.id.reg_genero);
         txtGrado=view.findViewById(R.id.reg_grado);
         crvGuardar=view.findViewById(R.id.reg_btnguardar);

@@ -190,7 +190,7 @@
                     app:startIconDrawable="@drawable/docente_perfil_icono_estado">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_spestado"
+                        android:id="@+id/reg_estado"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"

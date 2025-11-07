@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/degradado_fondo_grupos_pase"
+    android:layout_margin="8dp"
+    android:padding="16dp">
+
+    <!-- Nombre de la Materia -->
+    <TextView
+        android:id="@+id/item_grupo_txtasignatura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Programación Avanzada"
+        android:fontFamily="@font/robotobold"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/blanco"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Clave y Periodo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/item_grupo_txtclave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="PROG202"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/robotocondensed"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/item_grupo_txtperiodo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ago-Dic 2025"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/robotocondensed"
+            android:textColor="@color/blanco" />
+
+    </LinearLayout>
+
+    <!-- Horario -->
+    <TextView
+        android:id="@+id/item_grupo_txthorario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lun y Mie 10:00 - 12:00 hrs"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/robotocondensed"
+        android:textColor="@color/blanco"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botón para abrir cámara -->
+    <ImageButton
+        android:id="@+id/item_grupo_btnRegistrar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/button_circle"
+        android:src="@drawable/icono_camara"
+        android:contentDescription="Registrar asistencia" />
+
+</LinearLayout>
