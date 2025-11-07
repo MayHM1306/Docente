@@ -92,7 +92,7 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/foto_desarrollador1"
+                            android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/borde_circular_blanco" />
@@ -114,7 +114,7 @@
                                 android:fontFamily="@font/vogue" />
 
                             <TextView
-                                android:id="@+id:rol_dev1"
+                                android:id="@+id/rol_dev1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Desarrolladora principal"
@@ -134,7 +134,7 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/foto_desarrollador2"
+                            android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/borde_circular_blanco" />
@@ -174,7 +174,7 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/foto_desarrollador3"
+                            android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/borde_circular_blanco" />
@@ -214,7 +214,7 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/foto_desarrollador3"
+                            android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/borde_circular_blanco" />
@@ -254,7 +254,7 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/foto_desarrollador3"
+                            android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/borde_circular_blanco" />
@@ -268,7 +268,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="JOSE JIMENEZ"
+                                android:text="JOSE ALBERTO JIMENEZ"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:textColor="@color/azul_cuatro"

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@color/azul_cinco"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Barra Azul con Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/azul_seis"
+            android:gravity="center"
+            android:id="@+id/msg_titulo"
+            android:text="Aviso"
+            android:fontFamily="@font/robotobold"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <!-- Contenedor de Icono y Mensaje -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
+
+            <!-- Icono a la izquierda -->
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/encabezado_icono_usuario"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Mensaje a la derecha -->
+            <TextView
+                android:id="@+id/msg_mensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed"
+                android:text="Mensaje personalizado"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:textColor="@color/negro"/>
+            <ProgressBar
+                android:id="@+id/msg_progres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+        <!-- Botón de aceptar centrado -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/msg_btnAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/msg_textoboton"
+                android:padding="12dp"
+                android:fontFamily="@font/robotobold"
+                android:text="Aceptar"
+                android:textSize="16sp"
+                android:textColor="@color/blanco"
+                android:gravity="center"
+                android:background="@color/azul_seis"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

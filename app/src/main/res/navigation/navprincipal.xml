@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navprincipal"
-    app:startDestination="@id/splashh">
+    app:startDestination="@id/splash">
 
     <fragment
         android:id="@+id/login"
@@ -11,37 +11,37 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_to_menuu"
-            app:destination="@id/menuu" />
+            android:id="@+id/action_login_to_menu"
+            app:destination="@id/menu" />
         <action
-            android:id="@+id/action_login_to_autoRegistroo"
-            app:destination="@id/autoRegistroo" />
+            android:id="@+id/action_login_to_autoRegistro"
+            app:destination="@id/autoRegistro" />
     </fragment>
     <fragment
-        android:id="@+id/splashh"
-        android:name="com.itsoeh.hmmayte.docente.Splashh"
-        android:label="fragment_splashh"
-        tools:layout="@layout/fragment_splashh" >
+        android:id="@+id/splash"
+        android:name="com.itsoeh.hmmayte.docente.Splash"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashh_to_login"
+            android:id="@+id/action_splash_to_login"
             app:destination="@id/login" />
     </fragment>
     <fragment
-        android:id="@+id/menuu"
-        android:name="com.itsoeh.hmmayte.docente.Menuu"
-        android:label="fragment_menuu"
-        tools:layout="@layout/fragment_menuu" >
+        android:id="@+id/menu"
+        android:name="com.itsoeh.hmmayte.docente.Menu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
         <action
-            android:id="@+id/action_menuu_to_login"
+            android:id="@+id/action_menu_to_login"
             app:destination="@id/login" />
     </fragment>
     <fragment
-        android:id="@+id/autoRegistroo"
-        android:name="com.itsoeh.hmmayte.docente.AutoRegistroo"
-        android:label="fragment_auto_registroo"
-        tools:layout="@layout/fragment_auto_registroo" >
+        android:id="@+id/autoRegistro"
+        android:name="com.itsoeh.hmmayte.docente.AutoRegistro"
+        android:label="fragment_auto_registro"
+        tools:layout="@layout/fragment_auto_registro" >
         <action
-            android:id="@+id/action_autoRegistroo_to_login"
+            android:id="@+id/action_autoregistro_to_login"
             app:destination="@id/login" />
     </fragment>
 </navigation>
