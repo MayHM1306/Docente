@@ -46,6 +46,7 @@ public class AdapterGrupoPase extends RecyclerView.Adapter<AdapterGrupoPase.View
     public class ViewHolderGrupo extends RecyclerView.ViewHolder{
         TextView txtAsignatura, txtClave, txtPeriodo, txtHorario;
         private ImageButton imgCamara;
+        private ImageButton imgCamar;
         public ViewHolderGrupo(@NonNull View itemView) {
             super(itemView);
             txtAsignatura = itemView.findViewById(R.id.item_grupo_txtasignatura);
