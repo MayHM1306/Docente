@@ -17,11 +17,12 @@
     <!-- ONDA ENCIMA DEL VIDEO -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/fusion_ondas_dos"
         android:layout_gravity="top"
-        android:layout_marginTop="150dp"
         android:scaleType="fitXY"
-        android:src="@drawable/fusion_ondas_dos" />
+        android:layout_marginTop="165dp"
+        />
 
     <!-- Contenedor de elementos -->
     <LinearLayout
@@ -91,11 +92,12 @@
             android:id="@+id/login_autoregistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/applegaramond"
-            android:text="Registrate..."
+            android:text="@string/Registrate"
             android:textAlignment="textEnd"
-            android:textColor="@color/azul_cuatro"
-            android:textSize="30sp" />
+            android:textColor="@color/blanco"
+            android:textSize="25sp" />
 
         <!-- Botón de inicio de sesión -->
         <LinearLayout
