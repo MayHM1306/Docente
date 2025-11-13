@@ -8,10 +8,6 @@
             android:id="@+id/menu_perfil"
             android:icon="@drawable/menu_icono_perfil_docente"
             android:title="Perfil" />
-        <item
-            android:id="@+id/menu_modificar_perfil"
-            android:icon="@drawable/menu_icono_perfil_docente"
-            android:title="Modificar Perfil" />
     </group>
     <group
         android:id="@+id/estado">
@@ -19,16 +15,6 @@
             android:id="@+id/menu_grupos"
             android:icon="@drawable/menu_icono_estado_grupos"
             android:title="Grupos" />
-
-        <item
-            android:id="@+id/menu_modificarGrupos"
-            android:icon="@drawable/menu_icono_estado_inscripcion"
-            android:title="Modificar Grupos" />
-
-        <item
-            android:id="@+id/menu_graficas"
-            android:icon="@drawable/menu_icono_graficas"
-            android:title="Graficas" />
     </group>
 
     <group
@@ -38,7 +24,15 @@
             android:id="@+id/menu_paseLista"
             android:icon="@drawable/menu_icono_graficas"
             android:title="Pase de Lista" />
+        <item
+            android:id="@+id/menu_graficas"
+            android:icon="@drawable/menu_icono_graficas"
+            android:title="Graficas" />
     </group>
+    <item
+        android:id="@+id/menu_acercade"
+        android:icon="@drawable/menu_icono_perfil_alumno"
+        android:title="Acerca de" />
 
     <item
         android:id="@+id/lateral_salir"
