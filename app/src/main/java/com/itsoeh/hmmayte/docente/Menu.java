@@ -163,6 +163,7 @@ public class Menu extends Fragment {
         colaDeSolicitudes.add(solicitud);
     }
 
+
     private void guardaObjetoEnSharedP(MDocente modelo) {
         // Guardar usuario con SharedPreferences
         prefs = requireActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
