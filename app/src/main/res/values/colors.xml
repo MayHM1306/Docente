@@ -20,4 +20,12 @@
     <color name="gris_dos">#f2f2f2</color>
     <color name="gris_tres">#fafafa</color>
 
+    <!-- Colores verdes -->
+    <color name="verde">#0AC70A</color>
+
+    <!-- Colores rojos -->
+    <color name="rojo">#C70A0A</color>
+
+
+
 </resources>

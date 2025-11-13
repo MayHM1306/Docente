@@ -16,7 +16,7 @@
             android:orientation="vertical"
             android:layout_gravity="top" />
 
-        <!-- LOGO PROYECTO (flotante) -->
+        <!-- LOGO PROYECTO (flotante) -->x
         <RelativeLayout
             android:id="@+id/logo_proyecto"
             android:layout_width="wrap_content"

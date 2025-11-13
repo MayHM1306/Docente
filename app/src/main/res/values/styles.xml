@@ -102,6 +102,29 @@
 
     </style>
 
+    <style name="EstiloInputAzulBuscar" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <!-- Desactivar borde original -->
+        <item name="boxBackgroundMode">none</item>
+
+        <!-- Usar tu borde con degradado -->
+        <item name="android:background">@drawable/borde_degradado_azul</item>
+
+        <!-- Hint -->
+        <item name="android:textColorHint">@color/azul_cuatro</item>
+        <item name="hintTextColor">@color/hint_azul</item>
+        <item name="hintTextAppearance">@style/FloatingHintBlue</item>
+
+        <!-- Texto -->
+        <item name="android:textColor">@color/azul_cuatro</item>
+
+        <!-- Iconos -->
+        <item name="colorOnSurface">@color/azul_siete</item>
+        <item name="colorControlNormal">@color/azul_siete</item>
+        <item name="startIconTint">@color/azul_siete</item>
+        <item name="placeholderTextColor">@color/azul_siete</item>
+
+    </style>
 
 
 

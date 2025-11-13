@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Capa del borde -->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:left="2dp"
+                android:top="2dp"
+                android:right="2dp"
+                android:bottom="2dp" />
+
+            <gradient
+                android:startColor="@color/azul_dos"
+                android:endColor="@color/azul_siete"
+                android:angle="0" />
+
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <!-- Capa interna (fondo real del TextInputLayout) -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+</layer-list>
