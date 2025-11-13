@@ -3,52 +3,36 @@
 
 
     <group
-        android:id="@+id/perfil"
-        >
+        android:id="@+id/perfil">
         <item
-            android:id="@+id/menu_perfilDocente"
+            android:id="@+id/menu_perfil"
             android:icon="@drawable/menu_icono_perfil_docente"
-            android:title="Docente" />
-        <item
-            android:id="@+id/menu_perfilAlumno"
-            android:icon="@drawable/menu_icono_perfil_alumno"
-            android:title="Alumno" />
+            android:title="Perfil" />
     </group>
     <group
-        android:id="@+id/estado"
-        >
+        android:id="@+id/estado">
         <item
-            android:id="@+id/menu_estadoGrupos"
+            android:id="@+id/menu_grupos"
             android:icon="@drawable/menu_icono_estado_grupos"
             android:title="Grupos" />
 
         <item
-            android:id="@+id/menu_estadoInscripciones"
+            android:id="@+id/menu_modificarGrupos"
             android:icon="@drawable/menu_icono_estado_inscripcion"
-            android:title="Inscripciones" />
-    </group>
+            android:title="Modificar Grupos" />
 
-    <group
-        android:id="@+id/grafica"
-        >
         <item
-            android:id="@+id/menu_graficasGenerales"
+            android:id="@+id/menu_graficas"
             android:icon="@drawable/menu_icono_graficas"
-            android:title="Graficas Generales" />
+            android:title="Graficas" />
     </group>
 
     <group
-        android:id="@+id/riesgos"
+        android:id="@+id/pasarLista"
         >
         <item
-            android:id="@+id/menu_alumnosEnRiesgo"
-            android:icon="@drawable/menu_icono_alumnos_riesgos"
-            android:title="Alumnos en Riesgo" />
+            android:id="@+id/menu_paseLista"
+            android:icon="@drawable/menu_icono_graficas"
+            android:title="Pase de Lista" />
     </group>
-
-    <item
-        android:id="@+id/menu_salir"
-        android:icon="@drawable/menu_icono_salir"
-        android:title="Salir" />
-
 </menu>
