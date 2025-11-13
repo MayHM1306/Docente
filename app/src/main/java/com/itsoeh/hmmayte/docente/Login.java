@@ -197,7 +197,7 @@ public class Login extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 nuevo.cerrarDialogo();
-                nuevo.mostrarDialogoBoton("No se puedo conectar", "Verifique su conexion a Internet");
+                nuevo.mostrarDialogoBoton("No se pudo conectar", "Verifique su conexion a Internet");
 
             }
         }) {
@@ -269,5 +269,4 @@ public class Login extends Fragment {
         editor.putString("correo", txtCorreo.getText().toString());
         editor.apply();
     }
-
 }

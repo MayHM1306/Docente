@@ -28,10 +28,10 @@
         <!-- FOTO DEL USUARIO -->
         <ImageView
             android:id="@+id/perfil_foto_usuario"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:padding="6dp"
-            android:src="@drawable/icono_grupos"
+            android:src="@drawable/grupo_estado_icono"
             android:scaleType="centerCrop"
             android:elevation="12dp"
             android:layout_centerHorizontal="true" />
@@ -48,166 +48,75 @@
         android:layout_marginTop="140dp"
         android:layout_marginBottom="15dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="6dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="@android:color/white"
-
+        app:cardBackgroundColor="@color/blanco"
         >
 
+        <!-- Contenedor General -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="20dp"
-            android:paddingBottom="93dp"
-            android:paddingHorizontal="20dp"
-            >
-            <ScrollView
-                android:id="@+id/scroll_contenido"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/layout_guardar">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:background="@drawable/grupo_fondo_img">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
 
-                    <!-- CLAVE DE LA ASIGNATURA -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Clave:"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_clave_grupo">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtClave"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- NOMBRE DE LA ASIGNTURA -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Asignatura:"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_clave_asignatura">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtAsignatura"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- PERIODO DE LA ASIGNATURA -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Periodo:"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_clave_periodo">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtPeriodo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Campo de selección de Estado -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Estado"
-                        app:startIconDrawable="@drawable/docente_perfil_icono_estado"
-                        app:startIconTint="@color/azul_cuatro"
-                        style="@style/EstiloInputAzul.Exposed">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/perfil_docente_actEstado"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:entries="@array/estado"
-                            android:textColor="@color/azul_cuatro"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- HORARIO DE LA ASIGNATURA-->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Horario(s):"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_clave_horario">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_usuario_txtHorario"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
-
-        <!-- BOTÓN FIJO ABAJO -->
-        <LinearLayout
-            android:id="@+id/layout_guardar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:layout_alignParentBottom="true">
-
-            <androidx.cardview.widget.CardView
+            <!-- BUSCAR GRUPO -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_btnentrar"
-                android:clickable="true"
-                android:focusable="true"
-                android:elevation="4dp"
-                app:cardCornerRadius="16dp">
+                style="@style/EstiloInputAzulBuscar"
+                app:hintEnabled="false"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/icono_buscar"
+                app:endIconTint="@color/azul_siete"
+                android:layout_marginHorizontal="20dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp">
 
-                <LinearLayout
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/grupo_txtBuscar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/degradado_boton"
-                    android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Guardar"
-                        android:fontFamily="@font/robotobold"
-                        android:textColor="@color/blanco"
-                        android:textSize="22sp"/>
+                    android:hint="Buscar grupo"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/azul_seis"
+                    android:textColorHint="@color/azul_cuatro"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_grupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="20dp"
+                android:clipToPadding="false"
+                android:scrollbars="none" />
+
+
+
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        android:contentDescription="Guardar cambios"
+        app:backgroundTint="@color/azul_siete"
+        app:tint="@android:color/white"
+        app:srcCompat="@drawable/icono_guardar" />
+
 
 </FrameLayout>

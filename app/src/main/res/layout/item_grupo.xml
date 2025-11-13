@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contenedor_secundario"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="20dp"
+        android:paddingHorizontal="20dp"
+        android:background="@color/azul_seis">
+
+        <TextView
+            android:id="@+id/grupo_txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lenguajes y Autómatas II"
+            android:textSize="16sp"
+            android:textColor="@color/blanco"
+            android:gravity="center"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/grupo_txtCodigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCD - 1016"
+            android:textSize="16sp"
+            android:textColor="@color/blanco"
+            android:fontFamily="@font/robotobold"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/grupo_txtPeriodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ago - Dic 25"
+            android:textSize="16sp"
+            android:textColor="@color/blanco"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/robotobold" />
+
+        <TextView
+            android:id="@+id/grupo_txtHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lu 7:00-9:00 Mi 11:00-15:00"
+            android:fontFamily="@font/robotobold"
+            android:textSize="16sp"
+            android:textColor="@color/blanco"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/grupo_txtCarrera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingeniería en Sistemas Computacionales"
+            android:textSize="18sp"
+            android:textColor="@color/blanco"
+            android:fontFamily="@font/robotoboitalic"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/grupo_txtTotalEstudiantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total de estudiantes: 29"
+                android:layout_alignParentEnd="true"
+                android:textSize="16sp"
+                android:textColor="@color/blanco"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp" />
+
+            <!-- Botón Modificar (parte inferior izquierda) -->
+            <ImageButton
+                android:id="@+id/btnModificar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom|start"
+                android:backgroundTint="@color/azul_cuatro"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:padding="8dp"
+                android:src="@drawable/encabezado_icono_modificar_perfil_usuario" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

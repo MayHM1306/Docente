@@ -7,7 +7,7 @@
         <item
             android:id="@+id/menu_perfil"
             android:icon="@drawable/menu_icono_perfil_docente"
-            android:title="Perfil" />
+            android:title="Perfil"/>
     </group>
     <group
         android:id="@+id/estado">
