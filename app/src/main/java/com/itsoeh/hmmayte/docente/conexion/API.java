@@ -2,7 +2,7 @@ package com.itsoeh.hmmayte.docente.conexion;
 
 public interface API {
     //CONEXION A LA BASE DE DATOS
-    public String URL = "http://192.168.12.127/wsescuela/"; // IP MAYTE - CASA CAMBIALO
+    public String URL = "http://192.168.0.104/wsescuela/"; // IP MAYTE - CASA CAMBIALO
     //public String URL = "http://192.168.1.4/wsescuela/"; // IP BETO - CASA
 
     //AUTENTICACION

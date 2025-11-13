@@ -8,6 +8,10 @@
             android:id="@+id/menu_perfil"
             android:icon="@drawable/menu_icono_perfil_docente"
             android:title="Perfil" />
+        <item
+            android:id="@+id/menu_modificar_perfil"
+            android:icon="@drawable/menu_icono_perfil_docente"
+            android:title="Modificar Perfil" />
     </group>
     <group
         android:id="@+id/estado">
@@ -35,4 +39,9 @@
             android:icon="@drawable/menu_icono_graficas"
             android:title="Pase de Lista" />
     </group>
+
+    <item
+        android:id="@+id/lateral_salir"
+        android:icon="@drawable/menu_icono_salir"
+        android:title="Salir" />
 </menu>
