@@ -9,7 +9,7 @@
 
     <!-- Nombre de la Materia -->
     <TextView
-        android:id="@+id/item_grupo_txtasignatura"
+        android:id="@+id/item_grupo_pase_txtasignatura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="12dp">
 
         <TextView
-            android:id="@+id/item_grupo_txtclave"
+            android:id="@+id/item_grupo_pase_txtclave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             android:textColor="@color/blanco" />
 
         <TextView
-            android:id="@+id/item_grupo_txtperiodo"
+            android:id="@+id/item_grupo_pase_txtperiodo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -56,7 +56,7 @@
 
     <!-- Horario -->
     <TextView
-        android:id="@+id/item_grupo_txthorario"
+        android:id="@+id/item_grupo_pase_txthorario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lun y Mie 10:00 - 12:00 hrs"
@@ -69,7 +69,7 @@
 
     <!-- Botón para abrir cámara -->
     <ImageButton
-        android:id="@+id/item_grupo_btnRegistrar"
+        android:id="@+id/item_grupo_pase_btnRegistrar"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center"

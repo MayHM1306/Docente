@@ -49,11 +49,11 @@ public class AdapterGrupoPase extends RecyclerView.Adapter<AdapterGrupoPase.View
         private ImageButton imgCamar;
         public ViewHolderGrupo(@NonNull View itemView) {
             super(itemView);
-            txtAsignatura = itemView.findViewById(R.id.item_grupo_txtasignatura);
-            txtClave = itemView.findViewById(R.id.item_grupo_txtclave);
-            txtPeriodo = itemView.findViewById(R.id.item_grupo_txtperiodo);
-            txtHorario = itemView.findViewById(R.id.item_grupo_txthorario);
-            imgCamara = itemView.findViewById(R.id.item_grupo_btnRegistrar);
+            txtAsignatura = itemView.findViewById(R.id.item_grupo_pase_txtasignatura);
+            txtClave = itemView.findViewById(R.id.item_grupo_pase_txtclave);
+            txtPeriodo = itemView.findViewById(R.id.item_grupo_pase_txtperiodo);
+            txtHorario = itemView.findViewById(R.id.item_grupo_pase_txthorario);
+            imgCamara = itemView.findViewById(R.id.item_grupo_pase_btnRegistrar);
         }
     }
 }
