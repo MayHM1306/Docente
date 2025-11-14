@@ -23,7 +23,11 @@
         android:id="@+id/paseLista"
         android:name="com.itsoeh.hmmayte.docente.PaseLista"
         android:label="fragment_pase_lista"
-        tools:layout="@layout/fragment_pase_lista" />
+        tools:layout="@layout/fragment_pase_lista" >
+        <action
+            android:id="@+id/action_paseLista_to_escaner"
+            app:destination="@id/escaner" />
+    </fragment>
     <fragment
         android:id="@+id/modificarPerfil"
         android:name="com.itsoeh.hmmayte.docente.ModificarPerfil"
@@ -47,5 +51,14 @@
         <action
             android:id="@+id/action_registrarGrupo_to_grupos"
             app:destination="@id/grupos" />
+    </fragment>
+    <fragment
+        android:id="@+id/escaner"
+        android:name="com.itsoeh.hmmayte.docente.Escaner"
+        android:label="fragment_escaner"
+        tools:layout="@layout/fragment_escaner" >
+        <action
+            android:id="@+id/action_escaner_to_paseLista"
+            app:destination="@id/paseLista" />
     </fragment>
 </navigation>

@@ -213,58 +213,8 @@ public class Login extends Fragment {
 
     }
 
-    private void cargarModelo(String correo) {
-        Dialogo nuevo = new Dialogo(this.getContext());//vrear un cuadro de dialogo
-        nuevo.mostrarDialogoProgress("Por favor espere", "Conectando con el servidor");
-        RequestQueue colaDeSolicitudes = VolleySingleton.getInstance(this.getContext()).getRequestQueue();
-        StringRequest solicitud = new StringRequest(Request.Method.POST, API.DOC_BUSCAR_POR_CORREO,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        nuevo.cerrarDialogo();//apaga el cuadro de dialogo
-                        nuevo.mostrarDialogoBoton("Aviso", response);
-                        try {
-                            //LEER AQUI EL CONTENIDO DE LA VARIABLE response
-                            JSONObject obj = new JSONObject(response);
-                            JSONArray array = obj.getJSONArray("msg");//
-                            JSONArray reg0 = array.getJSONArray(0);
-                            MDocente modelo = new MDocente();
-                            modelo.setId_docente(reg0.getInt(0));
-                            modelo.setNumero(reg0.getString(1));
-                            modelo.setNombre(reg0.getString(2));
-                            modelo.setApp(reg0.getString(3));
-                            modelo.setApm(reg0.getString(4));
-                            modelo.setCorreo(reg0.getString(5));
-                            modelo.setEstado(reg0.getInt(6));
-                            nuevo.mostrarDialogoBoton("Nombre", modelo.toString());
-
-
-                        } catch (Exception ex) {
-                            //DETECTA ERRORES EN LA LECTURA DEL ARCHIVO JSON
-                            nuevo.mostrarDialogoBoton("Error", "Error de formato " + ex.getMessage());
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                nuevo.cerrarDialogo();
-                nuevo.mostrarDialogoBoton("No se puedo conectar", "Verifique su conexion a Internet");
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<String, String>();
-                param.put("correo", correo);
-                return param;
-            }
-        };
-        colaDeSolicitudes.add(solicitud);
-
-    }
-
     private void guardarCorreo(View view) {
-        prefs = view.getContext().getSharedPreferences("Mis preferencias", MODE_PRIVATE);
+        prefs = view.getContext().getSharedPreferences("MisPreferencias", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("correo", txtCorreo.getText().toString());
         editor.apply();

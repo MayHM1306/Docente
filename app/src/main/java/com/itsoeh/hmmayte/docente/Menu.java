@@ -109,7 +109,11 @@ public class Menu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         vincularComponentes(view);
         escuchadores(view);
-        String correo = this.leerCorreoDesdeShareP(view);//aqui
+        View header = navigationView.getHeaderView(0);
+        txtDocente = header.findViewById(R.id.encabezado_txtnombreusuario);
+        txtCorreo = header.findViewById(R.id.encabezado_txtcorreousuario);
+
+        String correo = leerCorreoDesdeShareP(view);
         this.cargarUsuarioDesdeBD(correo);
     }
 
@@ -196,9 +200,6 @@ public class Menu extends Fragment {
         drawerLayout = view.findViewById(R.id.menu);
         navigationView = view.findViewById(R.id.menu_navview);
         toolbar = view.findViewById(R.id.menu_toolbar);
-        View encabezado = navigationView.getHeaderView(0);
-        txtDocente = encabezado.findViewById(R.id.encabezado_txtnombreusuario);
-        txtCorreo = encabezado.findViewById(R.id.encabezado_txtcorreousuario);
         // Usamos la actividad para configurar la Toolbar
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
@@ -254,5 +255,8 @@ public class Menu extends Fragment {
             }
             return true;
         });
+
     }
+
+
 }

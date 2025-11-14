@@ -35,7 +35,7 @@ public class AdapterGrupo extends RecyclerView.Adapter<AdapterGrupo.ViewHolderGr
     @Override
     public ViewHolderGrupo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_grupo, null, false); // ✅ CORRECTO
+                .inflate(R.layout.item_grupo, null, false);
         return new ViewHolderGrupo(view);
     }
 
