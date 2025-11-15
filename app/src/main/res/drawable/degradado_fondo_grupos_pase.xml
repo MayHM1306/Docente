@@ -11,11 +11,6 @@
     <!-- Bordes redondeados -->
     <corners android:radius="16dp" />
 
-    <!-- Borde sutil -->
-    <stroke
-        android:width="2dp"
-        android:color="@color/azul_siete" />
-
     <!-- Sombra suave -->
     <padding
         android:left="12dp"

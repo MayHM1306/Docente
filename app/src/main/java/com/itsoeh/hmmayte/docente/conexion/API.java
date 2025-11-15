@@ -16,5 +16,10 @@ public interface API {
     // CRUD GRUPO
     public String DOC_LISTAR_GRUPOS = URL + "apiG.php?api=listargrupos";
 
+    //CRUD ASISTENCIA
+    public String ASISTENCIA_GUARDAR = URL + "apiA.php?api=guardar";
+
+    public String LISTAR_INSCRITOS = URL + "apiG.php?api=listarestudiantesporgrupo";
+
 
 }

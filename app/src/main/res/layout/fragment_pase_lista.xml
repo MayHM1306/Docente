@@ -21,31 +21,6 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Docente:"
-                    android:fontFamily="@font/robotobold"
-                    android:textColor="@color/blanco"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/listargrupo_txtdocente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre Apellidos"
-                    android:fontFamily="@font/robotobold"
-                    android:textColor="@color/blanco"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -53,8 +28,6 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true" />
         </LinearLayout>
-
-
         <!-- Buscador -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

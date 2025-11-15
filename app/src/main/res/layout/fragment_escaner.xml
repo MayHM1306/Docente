@@ -1,14 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Escaner">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Vista de la cámara -->
+    <com.journeyapps.barcodescanner.CompoundBarcodeView
+        android:id="@+id/barcodeView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp" />
+    <Button
+        android:id="@+id/btnGuardarAsistencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Pase de Asistencia"
+        android:background="@color/azul_siete"
+        android:textColor="@android:color/white"
+        android:layout_margin="10dp"/>
+
+
+    <!-- Lista de estudiantes escaneados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerEstudiantesEscaneados"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="8dp" />
 
-</FrameLayout>
+</LinearLayout>

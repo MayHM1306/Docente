@@ -54,7 +54,6 @@
     </fragment>
     <fragment
         android:id="@+id/escaner"
-        android:name="com.itsoeh.hmmayte.docente.Escaner"
         android:label="fragment_escaner"
         tools:layout="@layout/fragment_escaner" >
         <action

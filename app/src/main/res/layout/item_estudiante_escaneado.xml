@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/azul_tres">
+
+    <!-- Código del alumno -->
+    <TextView
+        android:id="@+id/item_est_escaneado_txtCodigoAlumno"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobold"
+        android:text="22011009"
+        android:textSize="14sp"
+        android:textColor="@android:color/background_light" />
+
+    <!-- Nombre del alumno -->
+    <TextView
+        android:id="@+id/item_est_escaneado_txtNombreEstudiante"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/robotocondensed"
+        android:text="Nombre del Estudiante"
+        android:paddingStart="15dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/background_light" />
+
+    <!-- Spinner de asistencia -->
+    <Spinner
+        android:id="@+id/item_est_escaneado_spinnerAsistencia"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_fondo"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@color/blanco" />
+
+</LinearLayout>

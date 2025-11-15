@@ -1,6 +1,7 @@
 package com.itsoeh.hmmayte.docente;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -44,7 +45,6 @@ public class PaseLista extends Fragment {
     private AdapterGrupoPase adaptador;
     private List<MGrupo> listaGrupos;
     private EditText txtBuscar;
-    private TextView txtDocente;
 
     private SharedPreferences prefs;
     private MDocente objUser;
@@ -57,14 +57,24 @@ public class PaseLista extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pase_lista, container, false);
 
         vincularComponentes(view);
+        adaptador = new AdapterGrupoPase(listaGrupos, new AdapterGrupoPase.OnGrupoClickListener() {
+            @Override
+            public void onTomarAsistenciaClick(MGrupo grupo) {
+                Bundle args = new Bundle();
+                args.putInt("id_grupo", grupo.getId_grupo());
 
+                NavController control = Navigation.findNavController(requireView());
+                control.navigate(R.id.action_paseLista_to_escaner, args);
+            }
+        });
+
+        recyclerViewGrupos.setAdapter(adaptador);
 
         return view;
     }
 
     private void vincularComponentes(View view) {
         txtBuscar = view.findViewById(R.id.listargrupo_buscador);
-        txtDocente = view.findViewById(R.id.listargrupo_txtdocente);
         recyclerViewGrupos = view.findViewById(R.id.listargrupo_recyclerview);
 
         recyclerViewGrupos.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -78,7 +88,6 @@ public class PaseLista extends Fragment {
         String objeto = prefs.getString("usuario", "");
         Gson gson = new Gson();
         MDocente modelo = gson.fromJson(objeto, MDocente.class);
-        txtDocente.setText(modelo.getNombre() + " " + modelo.getApp() + " " + modelo.getApm());
         return modelo;
     }
 
@@ -150,8 +159,10 @@ public class PaseLista extends Fragment {
                 Bundle args = new Bundle();
                 args.putInt("id_grupo", grupo.getId_grupo());
 
-                NavController nav = Navigation.findNavController(requireActivity(), R.id.navsecundario);
-                nav.navigate(R.id.action_paseLista_to_escaner, args);
+                Intent intent = new Intent(getContext(), Escaner.class);
+                intent.putExtra("id_grupo", grupo.getId_grupo());
+                startActivity(intent);
+
             }
         });
 

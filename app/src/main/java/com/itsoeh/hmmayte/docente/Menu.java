@@ -218,7 +218,7 @@ public class Menu extends Fragment {
         // Cargar el fragmento por defecto
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.menu_contenedor_interno, new Grupos())
+                .replace(R.id.menu_contenedor_interno, new Inicio())
                 .commit();
 
         // Listener de opciones del drawer

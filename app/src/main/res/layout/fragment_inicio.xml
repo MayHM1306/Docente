@@ -4,42 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/degradado_fondo_grupos_pase"
-    android:padding="20dp">
+    android:gravity="center"
+    android:padding="24dp"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- LOGO PRINCIPAL -->
+    <ImageView
+        android:id="@+id/inicio_logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/logo_sin_fondo"
+        android:elevation="8dp"
+        android:contentDescription="Logo" />
+
+    <!-- TEXTO BIENVENIDA -->
+    <TextView
+        android:id="@+id/inicio_txtBienvenido"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:text="Bienvenido"
+        android:textColor="@color/blanco"
+        android:textSize="15sp"
+        android:fontFamily="@font/robotobold"
+        android:layout_marginBottom="8dp" />
 
-        <!-- LOGO O ICONO PRINCIPAL -->
-        <ImageView
-            android:id="@+id/inicio_logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/logo_sin_fondo" />
+    <!-- NOMBRE DEL DOCENTE -->
+    <TextView
+        android:id="@+id/inicio_txtNombreDocente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del docente"
+        android:textColor="@color/blanco"
+        android:textSize="20sp"
+        android:fontFamily="@font/robotobold"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
 
-        <!-- TEXTO DE BIENVENIDA -->
-        <TextView
-            android:id="@+id/inicio_txtBienvenido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotobold"
-            android:text="Bienvenido"
-            android:textColor="@color/blanco"
-            android:textSize="20sp" />
-
-        <!-- TEXTO DE BIENVENIDA -->
-        <TextView
-            android:id="@+id/inicio_txtNombreDocente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/robotobold"
-            android:text="Mario Pérez Bautista"
-            android:textColor="@color/blanco"
-            android:textSize="30sp" />
-    </LinearLayout>
 </LinearLayout>

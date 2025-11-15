@@ -1,64 +1,230 @@
 package com.itsoeh.hmmayte.docente;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Escaner#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Escaner extends Fragment {
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.itsoeh.hmmayte.docente.adapter.AdapterEstudiantesEscaneados;
+import com.itsoeh.hmmayte.docente.conexion.API;
+import com.itsoeh.hmmayte.docente.conexion.VolleySingleton;
+import com.itsoeh.hmmayte.docente.modelo.MEstudiante;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Escaner() {
-        // Required empty public constructor
-    }
+public class Escaner extends AppCompatActivity {
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Escaner.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Escaner newInstance(String param1, String param2) {
-        Escaner fragment = new Escaner();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private CompoundBarcodeView barcodeView;
+    private static final int REQUEST_CAMERA_PERMISSION = 1001;
+
+    private RecyclerView recyclerEstudiantes;
+    private AdapterEstudiantesEscaneados adapter;
+    private ArrayList<MEstudiante> listaEstudiantes = new ArrayList<>();
+    private Button btnGuardar;
+
+
+    private int idGrupo;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        setContentView(R.layout.fragment_escaner);
+        btnGuardar = findViewById(R.id.btnGuardarAsistencia);
+
+        btnGuardar.setOnClickListener(v -> guardarAsistencias());
+
+
+        idGrupo = getIntent().getIntExtra("id_grupo", -1);
+
+        barcodeView = findViewById(R.id.barcodeView);
+        recyclerEstudiantes = findViewById(R.id.recyclerEstudiantesEscaneados);
+        recyclerEstudiantes.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new AdapterEstudiantesEscaneados(listaEstudiantes);
+        recyclerEstudiantes.setAdapter(adapter);
+
+        // PEDIR PERMISO SI FALTA
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{Manifest.permission.CAMERA},
+                    REQUEST_CAMERA_PERMISSION
+            );
+
+        } else {
+            // SI YA TIENE PERMISO → CARGAR NORMAL
+            cargarEstudiantesInscritos(idGrupo);
+            iniciarEscaneo();
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_escaner, container, false);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+
+            if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                // DEBE INICIALIZAR TODO ESTO TAMBIÉN
+                cargarEstudiantesInscritos(idGrupo);
+                iniciarEscaneo();
+
+            } else {
+                Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
+    private void iniciarEscaneo() {
+
+        barcodeView.decodeContinuous(new BarcodeCallback() {
+            @Override
+            public void barcodeResult(BarcodeResult result) {
+
+                if (result != null) {
+
+                    String codigo = result.getText();
+
+                    adapter.marcarAsistencia(codigo);
+
+                    Toast.makeText(Escaner.this,
+                            "Registrado: " + codigo, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        barcodeView.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        barcodeView.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        barcodeView.resume();
+    }
+
+    private void cargarEstudiantesInscritos(int idGrupo) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, API.LISTAR_INSCRITOS,
+                response -> {
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        JSONArray array = json.getJSONArray("msg");
+
+                        listaEstudiantes.clear();
+
+                        for (int i = 0; i < array.length(); i++) {
+
+                            JSONObject obj = array.getJSONObject(i);
+
+                            MEstudiante e = new MEstudiante();
+                            e.setMatricula(obj.getString("matricula"));
+                            e.setNombre(obj.getString("nombre"));
+                            e.setApp(obj.getString("app"));
+                            e.setApm(obj.getString("apm"));
+
+                            listaEstudiantes.add(e);
+                        }
+
+                        adapter.notifyDataSetChanged();
+
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Error JSON: " + e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                },
+                error -> Toast.makeText(this, "Error de conexión", Toast.LENGTH_SHORT).show()
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> p = new HashMap<>();
+                p.put("id_grupo", String.valueOf(idGrupo));
+                return p;
+            }
+        };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
+    }
+
+    private int convertirEstado(String estado) {
+        switch (estado) {
+            case "Asistencia":
+                return 1;
+            case "Retardo":
+                return 2;
+            case "Falta":
+                return 3;
+            case "Justificado":
+                return 4;
+            default:
+                return 0; // Sin marcar
+        }
+    }
+    private void guardarAsistencias() {
+
+        ArrayList<MEstudiante> lista = adapter.getLista();
+
+        for (MEstudiante est : lista) {
+
+            String matricula = est.getMatricula();
+            int valorAsistencia = convertirEstado(est.getAsistencia()); // 0–3
+
+            StringRequest req = new StringRequest(
+                    Request.Method.POST,
+                    API.ASISTENCIA_GUARDAR,
+                    response -> {
+                        // Puedes manejar respuesta por alumno
+                    },
+                    error -> {
+                        Toast.makeText(this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> p = new HashMap<>();
+                    p.put("matricula", matricula);
+                    p.put("id_grupo", String.valueOf(idGrupo));
+                    p.put("asistencia", String.valueOf(valorAsistencia));
+                    return p;
+                }
+            };
+
+            VolleySingleton.getInstance(this).addToRequestQueue(req);
+        }
+
+        Toast.makeText(this, "Asistencias guardadas correctamente", Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

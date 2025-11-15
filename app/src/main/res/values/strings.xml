@@ -20,6 +20,12 @@
         <item>Dr.</item>
         <item>Dra.</item>
     </string-array>
+    <string-array name="lista_asistencia">
+        <item>PRESENTE</item>
+        <item>FALTA</item>
+        <item>RETARDO</item>
+        <item>JUSTIFICADO</item>
+    </string-array>
 
     <string name="Registrate"><u>Registrate...</u></string>
 
