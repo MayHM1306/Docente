@@ -197,7 +197,7 @@ public class Escaner extends AppCompatActivity {
         for (MEstudiante est : lista) {
 
             String matricula = est.getMatricula();
-            int valorAsistencia = convertirEstado(est.getAsistencia()); // 0–3
+            int valor = convertirEstado(est.getAsistencia()); // 0–3
 
             StringRequest req = new StringRequest(
                     Request.Method.POST,
@@ -212,9 +212,10 @@ public class Escaner extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> p = new HashMap<>();
-                    p.put("matricula", matricula);
+                    p.put("matricula", String.valueOf(matricula));
                     p.put("id_grupo", String.valueOf(idGrupo));
-                    p.put("asistencia", String.valueOf(valorAsistencia));
+                    p.put("valor", String.valueOf(valor));
+
                     return p;
                 }
             };
