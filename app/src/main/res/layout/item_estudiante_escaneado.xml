@@ -40,7 +40,7 @@
         <!-- Spinner de asistencia -->
         <Spinner
             android:id="@+id/item_est_escaneado_spinnerAsistencia"
-            android:layout_width="110dp"
+            android:layout_width="111dp"
             android:layout_height="40dp"
             android:background="@drawable/spinner_fondo"
             android:spinnerMode="dropdown"
