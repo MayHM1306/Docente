@@ -4,17 +4,12 @@
 
     <!-- Fondo con gradiente -->
     <gradient
-        android:startColor="@color/azul_siete"
-        android:endColor="@color/azul_tres"
+        android:startColor="@color/azul_tres"
+        android:endColor="@color/azul_dos"
         android:angle="45" />
 
     <!-- Bordes redondeados -->
     <corners android:radius="16dp" />
-
-    <!-- Borde sutil -->
-    <stroke
-        android:width="2dp"
-        android:color="@color/azul_cuatro" />
 
     <!-- Sombra suave -->
     <padding

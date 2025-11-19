@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inicio">
+    android:background="@drawable/degradado_fondo_grupos_pase"
+    android:gravity="center"
+    android:padding="24dp"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- LOGO PRINCIPAL -->
+    <ImageView
+        android:id="@+id/inicio_logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/logo_sin_fondo"
+        android:elevation="8dp"
+        android:contentDescription="Logo" />
+
+    <!-- TEXTO BIENVENIDA -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/inicio_txtBienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido"
+        android:textColor="@color/blanco"
+        android:textSize="15sp"
+        android:fontFamily="@font/robotobold"
+        android:layout_marginBottom="8dp" />
 
-</FrameLayout>
+    <!-- NOMBRE DEL DOCENTE -->
+    <TextView
+        android:id="@+id/inicio_txtNombreDocente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del docente"
+        android:textColor="@color/blanco"
+        android:textSize="20sp"
+        android:fontFamily="@font/robotobold"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+</LinearLayout>

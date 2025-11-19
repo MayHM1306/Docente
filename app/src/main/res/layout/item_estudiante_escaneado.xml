@@ -1,0 +1,51 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="12dp"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Código del alumno -->
+        <TextView
+            android:id="@+id/item_est_escaneado_txtCodigoAlumno"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotobold"
+            android:text="22011009"
+            android:textSize="15sp"
+            android:textColor="#1A237E"
+            android:gravity="center" />
+
+        <!-- Nombre del alumno -->
+        <TextView
+            android:id="@+id/item_est_escaneado_txtNombreEstudiante"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="12dp"
+            android:fontFamily="@font/robotocondensed"
+            android:text="Nombre del Estudiante"
+            android:textSize="17sp"
+            android:textColor="#37474F" />
+
+        <!-- Spinner de asistencia -->
+        <Spinner
+            android:id="@+id/item_est_escaneado_spinnerAsistencia"
+            android:layout_width="111dp"
+            android:layout_height="40dp"
+            android:background="@drawable/spinner_fondo"
+            android:spinnerMode="dropdown"
+            android:popupBackground="@color/blanco" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

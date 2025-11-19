@@ -47,7 +47,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/cont_foto_usuario"
         android:layout_marginStart="20dp"
-        android:fontFamily="@font/dunkinsans"
+        android:fontFamily="@font/robotobold"
         android:text="Nombre de Usuario"
         android:textColor="@color/blanco"
         android:textSize="18sp" />
