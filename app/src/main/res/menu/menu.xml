@@ -31,7 +31,7 @@
     </group>
     <item
         android:id="@+id/menu_acercade"
-        android:icon="@drawable/menu_icono_perfil_alumno"
+        android:icon="@drawable/acerca_de"
         android:title="Acerca de" />
 
     <item

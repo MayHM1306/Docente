@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Borde azul claro -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="2dp" android:color="@color/azul_cuatro" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+
+</layer-list>

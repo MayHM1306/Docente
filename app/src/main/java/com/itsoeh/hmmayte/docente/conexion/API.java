@@ -3,7 +3,7 @@ package com.itsoeh.hmmayte.docente.conexion;
 public interface API {
     //CONEXION A LA BASE DE DATOS
     //public String URL = "http://178.6.9.133/wsescuela/"; // IP MAYTE - CASA CAMBIALO
-    public String URL = "http://192.168.1.148/wsescuela/"; // IP BETO - CASA
+    public String URL = "http://192.168.12.103/wsescuela/"; // IP BETO - CASA
 
     //AUTENTICACION
     public String VERIFICA = URL + "apiD.php?api=validar";
@@ -15,4 +15,6 @@ public interface API {
 
     // CRUD GRUPO
     public String DOC_LISTAR_GRUPOS = URL + "apiG.php?api=listargrupos";
+    String LISTAR_INSCRITOS = URL + "apiG.php?api=listargrupos";
+    String ASISTENCIA_GUARDAR = URL + "apiG.php?api=listargrupos";
 }

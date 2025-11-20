@@ -95,7 +95,7 @@
                             android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
-                            android:background="@drawable/borde_circular_blanco" />
+                            android:background="@drawable/acerca_de_may" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -107,7 +107,7 @@
                                 android:id="@+id/nombre_dev1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mayte Hernández"
+                                android:text="José Alberto Jimenez Reyes"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:textColor="@color/azul_cuatro"
@@ -117,7 +117,7 @@
                                 android:id="@+id/rol_dev1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Desarrolladora principal"
+                                android:text="Desarrollador principal"
                                 android:textSize="14sp"
                                 android:textColor="@color/gris_uno" />
                         </LinearLayout>
@@ -148,7 +148,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="DEYSI MARTIN"
+                                android:text="DEYSI MARTIN BRUNO"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:textColor="@color/azul_cuatro"
@@ -177,7 +177,7 @@
                             android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
-                            android:background="@drawable/borde_circular_blanco" />
+                            android:background="@drawable/acerca_de_may" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -188,7 +188,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="MARIBEL MATURANO"
+                                android:text="Mayte Hernández Mendoza"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:textColor="@color/azul_cuatro"
@@ -268,7 +268,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="JOSE ALBERTO JIMENEZ"
+                                android:text="Maribel Maturano Sanchez"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
                                 android:textColor="@color/azul_cuatro"

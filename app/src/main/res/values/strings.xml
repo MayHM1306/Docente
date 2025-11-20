@@ -4,14 +4,17 @@
     <string name="abrir_men">abrir</string>
     <string name="cerrar_men">cerrar</string>
     <string name="desc_lugar">EduVerse</string>
+
     <string-array name="estado">
         <item>Activo</item>
         <item>De Baja</item>
     </string-array>
+
     <string-array name="genero">
         <item>Masculino</item>
         <item>Femenino</item>
     </string-array>
+
     <string-array name="grado">
         <item>Lic.</item>
         <item>Ing.</item>
@@ -20,6 +23,7 @@
         <item>Dr.</item>
         <item>Dra.</item>
     </string-array>
+
     <string-array name="lista_asistencia">
         <item>PRESENTE</item>
         <item>FALTA</item>
