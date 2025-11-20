@@ -73,16 +73,16 @@
                     android:orientation="vertical"
                     >
 
-                    <!-- CLAVE DE LA ASIGNATURA -->
+                    <!-- ID GRUPO DE LA ASIGNATURA -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Clave:"
+                        android:hint="ID Grupo:"
                         style="@style/EstiloInputAzul"
                         app:startIconDrawable="@drawable/icono_clave_grupo">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtClave"
+                            android:id="@+id/perfil_docente_txtIdGrupo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -91,16 +91,16 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- NOMBRE DE LA ASIGNTURA -->
+                    <!-- CLAVE DE LA ASIGNTURA -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Asignatura:"
+                        android:hint="Clave:"
                         style="@style/EstiloInputAzul"
                         app:startIconDrawable="@drawable/icono_clave_asignatura">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtAsignatura"
+                            android:id="@+id/perfil_docente_txtClave"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
@@ -121,42 +121,85 @@
                             android:id="@+id/perfil_docente_txtPeriodo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="@color/azul_cuatro"
+                            android:layout_marginBottom="10dp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- CARRERA DE LA ASIGNATURA -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Carrera:"
+                        style="@style/EstiloInputAzul"
+                        app:startIconDrawable="@drawable/icono_clave_asignatura">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/perfil_docente_txtCarrera"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="@color/azul_cuatro"
+                            android:layout_marginBottom="10dp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- ID DOCENTE DE LA ASIGNATURA -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="ID Docente:"
+                        style="@style/EstiloInputAzul"
+                        app:startIconDrawable="@drawable/icono_nombre">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/perfil_docente_txtIdDocente"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/azul_cuatro"
                             android:layout_marginBottom="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Campo de selección de Estado -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <!-- ESTADO DE LA ASIGNATURA-->
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Estado"
-                        app:startIconDrawable="@drawable/docente_perfil_icono_estado"
-                        app:startIconTint="@color/azul_cuatro"
-                        style="@style/EstiloInputAzul.Exposed">
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/spinner_estilo"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
-                        <AutoCompleteTextView
-                            android:id="@+id/perfil_docente_actEstado"
+                        <ImageView
+                            android:id="@+id/iconEstado"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/docente_perfil_icono_estado"
+                            android:tint="@color/azul_cuatro"/>
+
+                        <Spinner
+                            android:id="@+id/sp_Estado"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:entries="@array/estado"
-                            android:textColor="@color/azul_cuatro"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@id/iconEstado"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="10dp"
+                            android:background="@android:color/transparent"/>
+                    </RelativeLayout>
 
-                    <!-- HORARIO DE LA ASIGNATURA-->
+                    <!-- NOMBRE DE LA ASIGNATURA-->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Horario(s):"
+                        android:hint="Asignatura:"
                         style="@style/EstiloInputAzul"
                         app:startIconDrawable="@drawable/icono_clave_horario">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_usuario_txtHorario"
+                            android:id="@+id/perfil_usuario_txtAsignatura"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"

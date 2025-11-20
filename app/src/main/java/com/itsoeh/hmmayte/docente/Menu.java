@@ -230,8 +230,8 @@ public class Menu extends Fragment {
                 fragment = new ModificarPerfil();
                 fragment.setArguments(paquete);//pasar correo al fragment
                 toolbar.setTitle("Perfil");
-            } else if (id == R.id.menu_grupos) {
-                fragment = new Grupos();
+            } else if (id == R.id.registrarGrupo) {
+                fragment = new RegistrarGrupo();
                 toolbar.setTitle("Grupos");
             } else if (id == R.id.menu_paseLista) {
                 fragment = new PaseLista();

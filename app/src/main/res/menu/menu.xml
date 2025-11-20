@@ -12,9 +12,9 @@
     <group
         android:id="@+id/estado">
         <item
-            android:id="@+id/menu_grupos"
+            android:id="@+id/registrarGrupo"
             android:icon="@drawable/icono_grupos"
-            android:title="Grupos" />
+            android:title="Registrar Grupo" />
     </group>
 
     <group
