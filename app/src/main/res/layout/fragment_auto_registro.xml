@@ -178,97 +178,86 @@
                 <!-- ========== SPINNERS ========== -->
 
                 <!-- GÉNERO -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
                     android:layout_marginBottom="15dp"
-                    android:paddingVertical="10dp">
+                    android:background="@drawable/spinner_estilo"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginTop="10dp">
 
                     <ImageView
                         android:id="@+id/iconGenero"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/docente_perfil_icono_genero"
-                        android:tint="@color/azul_cuatro"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:tint="@color/azul_cuatro"/>
 
                     <Spinner
                         android:id="@+id/sp_Genero"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:background="@drawable/spinner_estilo"
-                        android:padding="12dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/iconGenero"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iconGenero"
-                        app:layout_constraintBottom_toBottomOf="@id/iconGenero"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/iconGenero"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="10dp"
+                        android:background="@android:color/transparent"/>
+                </RelativeLayout>
 
                 <!-- ESTADO -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginBottom="15dp"
-                    android:paddingVertical="10dp">
+                    android:background="@drawable/spinner_estilo"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <ImageView
                         android:id="@+id/iconEstado"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/docente_perfil_icono_estado"
-                        android:tint="@color/azul_cuatro"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:tint="@color/azul_cuatro"/>
 
                     <Spinner
                         android:id="@+id/sp_Estado"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:background="@drawable/spinner_estilo"
-                        android:padding="12dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/iconEstado"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iconEstado"
-                        app:layout_constraintBottom_toBottomOf="@id/iconEstado"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/iconEstado"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="10dp"
+                        android:background="@android:color/transparent"/>
+                </RelativeLayout>
 
                 <!-- GRADO -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginBottom="15dp"
-                    android:paddingVertical="10dp">
+                    android:background="@drawable/spinner_estilo"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <ImageView
                         android:id="@+id/iconGrado"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/docente_perfil_icono_grado"
-                        android:tint="@color/azul_cuatro"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:tint="@color/azul_cuatro"/>
 
                     <Spinner
                         android:id="@+id/sp_Grado"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:background="@drawable/spinner_estilo"
-                        android:padding="12dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/iconGrado"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iconGrado"
-                        app:layout_constraintBottom_toBottomOf="@id/iconGrado"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/iconGrado"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="10dp"
+                        android:background="@android:color/transparent"/>
+                </RelativeLayout>
 
 
                 <!-- BOTÓN GUARDAR -->
@@ -277,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:layout_marginTop="40dp">
+                    android:layout_marginTop="20dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/reg_btnguardar"
