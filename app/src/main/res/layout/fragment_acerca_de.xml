@@ -95,7 +95,7 @@
                             android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
-                            android:background="@drawable/icono_grupos" />
+                            android:background="@drawable/acerca_de_beto" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -217,7 +217,7 @@
                             android:src="@drawable/sombra_oval"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="12dp"
-                            android:background="@drawable/borde_circular_blanco" />
+                            android:background="@drawable/acerca_de_dani" />
 
                         <LinearLayout
                             android:layout_width="0dp"
