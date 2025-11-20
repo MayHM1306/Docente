@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,15 +57,30 @@ public class PaseLista extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pase_lista, container, false);
 
         vincularComponentes(view);
+
         adaptador = new AdapterGrupoPase(listaGrupos, new AdapterGrupoPase.OnGrupoClickListener() {
+
             @Override
             public void onTomarAsistenciaClick(MGrupo grupo) {
                 Bundle args = new Bundle();
                 args.putInt("id_grupo", grupo.getId_grupo());
 
-                NavController control = Navigation.findNavController(requireView());
-                control.navigate(R.id.action_paseLista_to_escaner, args);
+                Intent intent = new Intent(getContext(), Escaner.class);
+                intent.putExtra("id_grupo", grupo.getId_grupo());
+                startActivity(intent);
             }
+
+            @Override
+            public void onConsultarClick(MGrupo grupo) {
+                Bundle args = new Bundle();
+                args.putInt("id_grupo", grupo.getId_grupo());
+
+                Intent intent = new Intent(getContext(), EstadisticasEstudiantes.class);
+                intent.putExtra("id_grupo", grupo.getId_grupo());
+                startActivity(intent);
+            }
+
+
         });
 
         recyclerViewGrupos.setAdapter(adaptador);
@@ -127,7 +142,7 @@ public class PaseLista extends Fragment {
                             configurarAdapter();
 
                         } catch (Exception e) {
-                            dialogo.mostrarDialogoBoton("Error", "Problema al interpretar JSON\n" + e.getMessage());
+                            dialogo.mostrarDialogoBoton("Error", "Interpretación JSON\n" + e.getMessage());
                         }
                     }
                 },
@@ -135,7 +150,7 @@ public class PaseLista extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         dialogo.cerrarDialogo();
-                        dialogo.mostrarDialogoBoton("Error de conexión", "No se pudo conectar al servidor.");
+                        dialogo.mostrarDialogoBoton("Error", "Fallo al conectar con el servidor.");
                     }
                 }) {
 
@@ -155,15 +170,17 @@ public class PaseLista extends Fragment {
         adaptador = new AdapterGrupoPase(listaGrupos, new AdapterGrupoPase.OnGrupoClickListener() {
             @Override
             public void onTomarAsistenciaClick(MGrupo grupo) {
-
-                Bundle args = new Bundle();
-                args.putInt("id_grupo", grupo.getId_grupo());
-
                 Intent intent = new Intent(getContext(), Escaner.class);
                 intent.putExtra("id_grupo", grupo.getId_grupo());
                 startActivity(intent);
-
             }
+            @Override
+            public void onConsultarClick(MGrupo grupo) {
+                Intent intent = new Intent(getContext(), EstadisticasEstudiantes.class);
+                intent.putExtra("id_grupo", grupo.getId_grupo());
+                startActivity(intent);
+            }
+
         });
 
         recyclerViewGrupos.setAdapter(adaptador);

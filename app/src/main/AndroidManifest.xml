@@ -27,6 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Escaner" />
+        <activity android:name=".EstadisticasEstudiantes" />
+
     </application>
 
 </manifest>
