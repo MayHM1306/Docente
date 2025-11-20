@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_paseLista_to_escaner"
             app:destination="@id/escaner" />
+        <action
+            android:id="@+id/action_paseLista_to_estadisticasEstudiantes"
+            app:destination="@id/estadisticasEstudiantes" />
     </fragment>
     <fragment
         android:id="@+id/modificarPerfil"
@@ -58,6 +61,15 @@
         tools:layout="@layout/fragment_escaner" >
         <action
             android:id="@+id/action_escaner_to_paseLista"
+            app:destination="@id/paseLista" />
+    </fragment>
+    <fragment
+        android:id="@+id/estadisticasEstudiantes"
+        android:name="com.itsoeh.hmmayte.docente.EstadisticasEstudiantes"
+        android:label="fragment_estadisticas_estudiantes"
+        tools:layout="@layout/fragment_estadisticas_estudiantes" >
+        <action
+            android:id="@+id/action_estadisticasEstudiantes_to_paseLista"
             app:destination="@id/paseLista" />
     </fragment>
 </navigation>

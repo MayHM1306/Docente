@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/azul_uno">
 
     <!-- VIDEO SUPERIOR -->
@@ -11,18 +11,17 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:alpha="0.35"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
 
     <!-- ONDA ENCIMA DEL VIDEO -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:src="@drawable/fusion_ondas_dos"
+        android:layout_height="match_parent"
         android:layout_gravity="top"
+        android:layout_marginTop="60dp"
         android:scaleType="fitXY"
-        android:layout_marginTop="165dp"
-        />
+        android:src="@drawable/fusion_ondas_dos" />
 
     <!-- Contenedor de elementos -->
     <LinearLayout
@@ -88,6 +87,7 @@
             android:textAlignment="textEnd"
             android:textColor="@color/azul_cuatro"
             android:textSize="22sp" />
+
         <TextView
             android:id="@+id/login_autoregistro"
             android:layout_width="match_parent"

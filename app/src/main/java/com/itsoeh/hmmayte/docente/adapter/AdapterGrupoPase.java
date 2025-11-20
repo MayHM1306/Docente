@@ -3,6 +3,7 @@ package com.itsoeh.hmmayte.docente.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,88 +16,90 @@ import com.itsoeh.hmmayte.docente.modelo.MGrupo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterGrupoPase extends RecyclerView.Adapter<AdapterGrupoPase.ViewHolderGrupo> {
+public class AdapterGrupoPase extends RecyclerView.Adapter<AdapterGrupoPase.ViewHolder> {
 
+    private List<MGrupo> listaGrupos;
     private List<MGrupo> listaOriginal;
-    private List<MGrupo> listaFiltrada;
     private OnGrupoClickListener listener;
 
-    // ✔ Interfaz del listener
+    // ---------- INTERFAZ ----------
     public interface OnGrupoClickListener {
         void onTomarAsistenciaClick(MGrupo grupo);
+        void onConsultarClick(MGrupo grupo);
     }
 
-    // ✔ Constructor correcto
     public AdapterGrupoPase(List<MGrupo> lista, OnGrupoClickListener listener) {
-        this.listaOriginal = lista;
-        this.listaFiltrada = new ArrayList<>(lista);
+        this.listaGrupos = lista;
         this.listener = listener;
+        this.listaOriginal = new ArrayList<>();
+        this.listaOriginal.addAll(lista);
     }
 
     @NonNull
     @Override
-    public ViewHolderGrupo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_grupo_pase, parent, false);
-        return new ViewHolderGrupo(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderGrupo holder, int position) {
-        MGrupo grupo = listaFiltrada.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        MGrupo grupo = listaGrupos.get(position);
 
-        holder.txtAsignatura.setText(grupo.getAsignatura());
         holder.txtClave.setText(grupo.getClave());
+        holder.txtAsignatura.setText(grupo.getAsignatura());
         holder.txtPeriodo.setText(grupo.getPeriodo());
-        holder.txtHorario.setText(grupo.getHorario());
+        holder.txtHorario.setText("Horario: " + grupo.getHorario());
 
-        // ✔ Clic en el botón de cámara
+        // ---------- BOTÓN TOMAR ASISTENCIA ----------
         holder.btnTomarAsistencia.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onTomarAsistenciaClick(grupo);
-            }
+            if (listener != null) listener.onTomarAsistenciaClick(grupo);
+        });
+
+        // ---------- BOTÓN CONSULTAR ----------
+        holder.btnConsultar.setOnClickListener(v -> {
+            if (listener != null) listener.onConsultarClick(grupo);
         });
     }
 
     @Override
     public int getItemCount() {
-        return listaFiltrada.size();
+        return listaGrupos.size();
     }
 
-    // ✔ MÉTODO PARA FILTRAR
-    public void filtrar(String texto) {
-        texto = texto.toLowerCase();
-        listaFiltrada.clear();
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        if (texto.isEmpty()) {
-            listaFiltrada.addAll(listaOriginal);
+        TextView txtClave, txtAsignatura, txtPeriodo, txtInscritos, txtHorario;
+        ImageButton btnTomarAsistencia, btnConsultar;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            txtClave = itemView.findViewById(R.id.item_grupo_pase_txtclave);
+            txtAsignatura = itemView.findViewById(R.id.item_grupo_pase_txtasignatura);
+            txtPeriodo = itemView.findViewById(R.id.item_grupo_pase_txtperiodo);
+            txtHorario = itemView.findViewById(R.id.item_grupo_pase_txthorario);
+
+            btnTomarAsistencia = itemView.findViewById(R.id.item_grupo_pase_btnRegistrar);
+            btnConsultar = itemView.findViewById(R.id.item_grupo_pase_btnConsultar);
+        }
+    }
+
+    // ---------- MÉTODO FILTRAR ----------
+    public void filtrar(String texto) {
+        int longitud = texto.length();
+        listaGrupos.clear();
+        if (longitud == 0) {
+            listaGrupos.addAll(listaOriginal);
         } else {
             for (MGrupo g : listaOriginal) {
-                if (g.getAsignatura().toLowerCase().contains(texto) ||
-                        g.getClave().toLowerCase().contains(texto) ||
-                        g.getPeriodo().toLowerCase().contains(texto)) {
-                    listaFiltrada.add(g);
+                if (g.getClave().toLowerCase().contains(texto.toLowerCase()) ||
+                        g.getAsignatura().toLowerCase().contains(texto.toLowerCase())) {
+                    listaGrupos.add(g);
                 }
             }
         }
-
         notifyDataSetChanged();
-    }
-
-    // ---------- ViewHolder ----------
-    public static class ViewHolderGrupo extends RecyclerView.ViewHolder {
-
-        TextView txtAsignatura, txtClave, txtPeriodo, txtHorario;
-        ImageButton btnTomarAsistencia;
-
-        public ViewHolderGrupo(@NonNull View itemView) {
-            super(itemView);
-
-            txtAsignatura = itemView.findViewById(R.id.item_grupo_pase_txtasignatura);
-            txtClave = itemView.findViewById(R.id.item_grupo_pase_txtclave);
-            txtPeriodo = itemView.findViewById(R.id.item_grupo_pase_txtperiodo);
-            txtHorario = itemView.findViewById(R.id.item_grupo_pase_txthorario);
-            btnTomarAsistencia = itemView.findViewById(R.id.item_grupo_pase_btnRegistrar);
-        }
     }
 }

@@ -20,6 +20,7 @@ public interface API {
     public String ASISTENCIA_GUARDAR = URL + "apiPase.php?api=guardar";
 
     public String LISTAR_INSCRITOS = URL + "apiG.php?api=listarestudiantesporgrupo";
+    public String LISTAR_ASISTENCIAS_POR_GRUPO_FECHA = URL + "apiPase.php?api=consultar_por_grupo_fecha";
 
 
 }

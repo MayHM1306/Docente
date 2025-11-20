@@ -67,15 +67,33 @@
         android:textColor="@color/blanco"
         android:layout_marginBottom="16dp" />
 
-    <!-- Botón para abrir cámara -->
-    <ImageButton
-        android:id="@+id/item_grupo_pase_btnRegistrar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:padding="8dp"
-        android:background="@drawable/button_circle"
-        android:src="@drawable/icono_camara"
-        android:contentDescription="Registrar asistencia" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <!-- Botón para abrir cámara -->
+        <ImageButton
+            android:id="@+id/item_grupo_pase_btnRegistrar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/button_circle"
+            android:src="@drawable/icono_camara"
+            android:contentDescription="Registrar asistencia" />
+
+        <ImageButton
+            android:id="@+id/item_grupo_pase_btnConsultar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/button_circle"
+            android:src="@drawable/icono_lista"
+            android:contentDescription="Consultar Asistencias" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
