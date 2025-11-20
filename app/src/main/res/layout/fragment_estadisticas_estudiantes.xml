@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@drawable/degradado_fondo"
+    android:background="@drawable/fusion_ondas_tres"
     tools:context=".EstadisticasEstudiantes">
 
     <!-- TÍTULO -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Estadísticas de Asistencia por Grupo"
-        android:fontFamily="@font/robotobold"
+        android:text="Asistencia por Estudiante"
+        android:fontFamily="@font/robotoboitalic"
         android:textColor="@color/blanco"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
-        android:gravity="center" />
+        android:gravity="left" />
 
     <!-- TARJETA DE FILTROS -->
     <LinearLayout
@@ -36,13 +36,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center_vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EstiloInputBlanco"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="Fecha Inicio"
                 app:startIconDrawable="@drawable/icono_clave_horario"
@@ -60,7 +60,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/EstiloInputBlanco"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Fecha Fin"
@@ -86,7 +86,7 @@
             android:layout_marginTop="16dp"
             android:padding="12dp"
             android:textColor="@color/blanco"
-            android:background="@color/azul_tres"
+            android:backgroundTint="@color/azul_seis"
             android:fontFamily="@font/robotobold" />
 
     </LinearLayout>

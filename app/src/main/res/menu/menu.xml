@@ -27,7 +27,7 @@
         <item
             android:id="@+id/menu_graficas"
             android:icon="@drawable/menu_icono_graficas"
-            android:title="Graficas" />
+            android:title="Estadísticas Generales" />
     </group>
     <item
         android:id="@+id/menu_acercade"

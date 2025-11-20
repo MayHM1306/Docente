@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/degradado_fondo"
     tools:context=".Estadisticas">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- BUSCADOR -->
+    <EditText
+        android:id="@+id/buscar_grupo_estadisticas"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Buscar grupo..."
+        android:padding="10dp"
+        android:background="@drawable/degradado_blur"
+        android:textColor="@color/blanco"
+        android:textColorHint="@color/blanco"
+        android:drawableStart="@drawable/icono_buscar"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/robotocondensed" />
+
+    <!-- LISTA DE GRUPOS -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_estadisticas_grupos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="4dp" />
 
-</FrameLayout>
+</LinearLayout>
