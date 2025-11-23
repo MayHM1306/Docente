@@ -33,7 +33,7 @@
      */
     public class RegistrarGrupo extends Fragment {
 
-        private TextInputEditText txtClave, txtAsignatura, txtPeriodo, txtCarrera, txtIdDocente, txtIdGrupo;
+        private TextInputEditText txtClave, txtAsignatura, txtPeriodo, txtCarrera, txtIdDocente;
         private Spinner spEstado;
         private CardView btnGuardar;
 
@@ -81,7 +81,6 @@
         }
 
         private void vinculadores(View view) {
-            txtIdGrupo = view.findViewById(R.id.perfil_docente_txtIdGrupo);
             txtClave = view.findViewById(R.id.perfil_docente_txtClave);
             txtAsignatura = view.findViewById(R.id.perfil_usuario_txtAsignatura);
             txtPeriodo = view.findViewById(R.id.perfil_docente_txtPeriodo);
@@ -135,7 +134,6 @@
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
-                    params.put("id_grupo",txtIdGrupo.getText().toString());
                     params.put("clave", txtClave.getText().toString());
                     params.put("periodo", txtPeriodo.getText().toString());
                     params.put("carrera", txtCarrera.getText().toString());

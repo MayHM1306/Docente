@@ -42,6 +42,7 @@ public class Escaner extends AppCompatActivity {
     private Button btnGuardar;
 
 
+
     private int idGrupo;
 
     @Override
@@ -113,7 +114,7 @@ public class Escaner extends AppCompatActivity {
                     adapter.marcarAsistencia(codigo);
 
                     Toast.makeText(Escaner.this,
-                            "Registrado: " + codigo, Toast.LENGTH_SHORT).show();
+                            "Se ha registrado: " + codigo, Toast.LENGTH_SHORT).show();
                 }
             }
         });

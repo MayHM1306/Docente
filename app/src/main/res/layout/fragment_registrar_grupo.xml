@@ -73,24 +73,6 @@
                     android:orientation="vertical"
                     >
 
-                    <!-- ID GRUPO DE LA ASIGNATURA -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="ID Grupo:"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_clave_grupo">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtIdGrupo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <!-- CLAVE DE LA ASIGNTURA -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -178,7 +160,7 @@
                             android:layout_height="22dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/docente_perfil_icono_estado"
-                            android:tint="@color/azul_cuatro"/>
+                            app:tint="@color/azul_cuatro" />
 
                         <Spinner
                             android:id="@+id/sp_Estado"

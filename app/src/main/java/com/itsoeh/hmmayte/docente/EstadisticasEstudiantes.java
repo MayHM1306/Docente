@@ -9,16 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.material.textfield.TextInputEditText;
-import com.itsoeh.hmmayte.docente.adapter.AdapterEstadistica;
 import com.itsoeh.hmmayte.docente.conexion.API;
 import com.itsoeh.hmmayte.docente.conexion.VolleySingleton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.itsoeh.hmmayte.docente.adapter.AdapterEstadistica;
 import com.itsoeh.hmmayte.docente.modelo.MEstadistica;
 import com.itsoeh.hmmayte.docente.util.Dialogo;
 
@@ -44,9 +42,8 @@ public class EstadisticasEstudiantes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_estadisticas_estudiantes); // <-- DEBES CREAR ESTE LAYOUT
+        setContentView(R.layout.fragment_estadisticas_estudiantes);
 
-        // Recibir id_grupo desde el intent
         idGrupo = getIntent().getIntExtra("id_grupo", -1);
 
         etFechaInicio = findViewById(R.id.et_fecha_inicio);
@@ -92,27 +89,34 @@ public class EstadisticasEstudiantes extends AppCompatActivity {
     }
 
     private void validarYConsultar() {
+
         String fechaInicio = etFechaInicio.getText().toString();
         String fechaFin = etFechaFin.getText().toString();
 
+        Dialogo dialogo = new Dialogo(this);
+
         if (fechaInicio.isEmpty() || fechaFin.isEmpty()) {
-            Toast.makeText(this, "Seleccione ambas fechas", Toast.LENGTH_SHORT).show();
+            dialogo.mostrarDialogoBoton("Fechas incompletas",
+                    "Por favor seleccione fecha inicio y fecha fin.");
             return;
         }
 
-        consultarEstadistica(idGrupo, fechaInicio, fechaFin);
+        consultarEstadistica(idGrupo, fechaInicio, fechaFin, dialogo);
     }
 
-    private void consultarEstadistica(int idGrupo, String fechaInicio, String fechaFin) {
+    private void consultarEstadistica(int idGrupo, String fechaInicio, String fechaFin, Dialogo dialogo) {
 
-        Dialogo dialogo = new Dialogo(this);
         dialogo.mostrarDialogoProgress("Consultando", "Obteniendo estadísticas...");
 
         RequestQueue cola = VolleySingleton.getInstance(this).getRequestQueue();
 
-        StringRequest solicitud = new StringRequest(Request.Method.POST, API.LISTAR_ASISTENCIAS_POR_GRUPO_FECHA,
+        StringRequest solicitud = new StringRequest(
+                Request.Method.POST,
+                API.LISTAR_ASISTENCIAS_POR_GRUPO_FECHA,
                 response -> {
+
                     dialogo.cerrarDialogo();
+
                     try {
                         JSONObject json = new JSONObject(response);
 
@@ -144,16 +148,25 @@ public class EstadisticasEstudiantes extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
 
                         } else {
-                            Toast.makeText(this, "Sin datos disponibles", Toast.LENGTH_SHORT).show();
+                            new Dialogo(this).mostrarDialogoBoton(
+                                    "Sin datos",
+                                    "No se encontraron registros en el rango seleccionado."
+                            );
                         }
 
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al procesar datos", Toast.LENGTH_LONG).show();
+                        new Dialogo(this).mostrarDialogoBoton(
+                                "Error",
+                                "Ocurrió un problema al procesar la información."
+                        );
                     }
                 },
                 error -> {
                     dialogo.cerrarDialogo();
-                    Toast.makeText(this, "Error de conexión", Toast.LENGTH_LONG).show();
+                    new Dialogo(this).mostrarDialogoBoton(
+                            "Error de conexión",
+                            "No se pudo conectar con el servidor."
+                    );
                 }
         ) {
 
@@ -169,5 +182,4 @@ public class EstadisticasEstudiantes extends AppCompatActivity {
 
         cola.add(solicitud);
     }
-
 }

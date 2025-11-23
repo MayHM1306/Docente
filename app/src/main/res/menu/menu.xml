@@ -15,6 +15,10 @@
             android:id="@+id/registrarGrupo"
             android:icon="@drawable/icono_grupos"
             android:title="Registrar Grupo" />
+        <item
+            android:id="@+id/solicitudes"
+            android:icon="@drawable/menu_icono_alumnos_riesgos"
+            android:title="Solicitudes" />
     </group>
 
     <group

@@ -57,7 +57,7 @@ public class Login extends Fragment {
     private NavController controladorDeNavegacion;
     private TextInputEditText txtCorreo;
     private TextInputEditText txtPass;
-    private TextView txtRegistro;
+    private TextView txtRegistro, txtRecuperar;
     private Bundle paquete;
     private SharedPreferences prefs;
 
@@ -130,6 +130,7 @@ public class Login extends Fragment {
         txtCorreo = view.findViewById(R.id.login_txtEmail);
         txtPass = view.findViewById(R.id.login_txtPassword);
         txtRegistro = view.findViewById(R.id.login_autoregistro);
+        txtRecuperar = view.findViewById(R.id.login_recuperarContrasena);
         txtCorreo.setText("mpb@itsoeh.edu.mx");
         txtPass.setText("123");
     }
@@ -147,7 +148,15 @@ public class Login extends Fragment {
                 clicRegistrarse(view);
             }
         });
+        txtRecuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { clicRecuperar(view);}
+        });
 
+    }
+
+    private void clicRecuperar(View view) {
+        controladorDeNavegacion.navigate((R.id.action_login_to_recuperarContrasena));
     }
 
     private void clicRegistrarse(View view) {

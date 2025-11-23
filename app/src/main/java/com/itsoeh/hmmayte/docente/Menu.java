@@ -213,6 +213,11 @@ public class Menu extends Fragment {
 
             drawerLayout.addDrawerListener(drawerToggle);
             drawerToggle.syncState();
+
+            // Cambiar color del icono hamburguesa
+            drawerToggle.getDrawerArrowDrawable().setColor(
+                    getResources().getColor(R.color.blanco)
+            );
         }
 
         // Cargar el fragmento por defecto
@@ -233,6 +238,9 @@ public class Menu extends Fragment {
             } else if (id == R.id.registrarGrupo) {
                 fragment = new RegistrarGrupo();
                 toolbar.setTitle("Grupos");
+            } else if (id == R.id.solicitudes) {
+                fragment = new Solicitudes();
+                toolbar.setTitle("Solicitudes");
             } else if (id == R.id.menu_paseLista) {
                 fragment = new PaseLista();
                 toolbar.setTitle("Pase de Lista");

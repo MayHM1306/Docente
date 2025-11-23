@@ -28,7 +28,7 @@
         android:textColor="@color/azul_uno"
         android:layout_marginTop="170dp"
         android:textSize="20sp"
-        android:fontFamily="@font/vogue"
+        android:fontFamily="@font/robotoboitalic"
         android:layout_marginBottom="8dp" />
 
     <!-- NOMBRE DEL DOCENTE -->
@@ -39,7 +39,7 @@
         android:text="Nombre del docente"
         android:textColor="@color/azul_uno"
         android:textSize="20sp"
-        android:fontFamily="@font/applegaramond"
+        android:fontFamily="@font/robotocondensed"
         android:gravity="center"
         android:layout_marginBottom="10dp" />
 

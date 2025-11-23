@@ -57,7 +57,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/sombra_oval" />
+                    android:src="@drawable/icono_buscar" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

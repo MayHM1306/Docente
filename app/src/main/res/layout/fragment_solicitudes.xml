@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/degradado_fondo"
-    tools:context=".Estadisticas">
-
+    android:background="@drawable/degradado_fondo">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -26,13 +23,13 @@
             android:padding="10dp">
 
             <EditText
-                android:id="@+id/buscar_grupo_estadisticas"
+                android:id="@+id/solicitudes_buscador"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/robotocondensed"
-                android:hint="Buscar grupo..."
+                android:hint="Buscar solicitud..."
                 android:textColor="@color/negro"
                 android:textSize="16sp" />
 
@@ -43,11 +40,10 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- LISTA DE GRUPOS -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_estadisticas_grupos"
+        android:id="@+id/recyclerInscripciones"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp" />
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

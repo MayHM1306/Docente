@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:inputType="textEmailAddress"
+                android:fontFamily="@font/robotocondensed"
                 android:textColor="@color/blanco" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,18 +72,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:fontFamily="@font/robotocondensed"
                 android:textColor="@color/blanco" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Recuoerar contraseña -->
         <TextView
-            android:id="@+id/login_recuperarContraseña"
+            android:id="@+id/login_recuperarContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
 
-            android:fontFamily="@font/applegaramond"
+            android:fontFamily="@font/robotocondensed"
             android:text="¿Olvidaste tu contraseña?"
             android:textAlignment="textEnd"
             android:textColor="@color/azul_cuatro"
@@ -93,8 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/applegaramond"
-            android:text="@string/Registrate"
+            android:fontFamily="@font/robotocondensed"
+            android:text="Regístrate..."
             android:textAlignment="textEnd"
             android:textColor="@color/blanco"
             android:textSize="25sp" />
@@ -129,7 +131,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/robotobold"
+                        android:fontFamily="@font/robotocondensed"
                         android:text="Iniciar Sesión"
                         android:textColor="@color/blanco"
                         android:textSize="22sp" />

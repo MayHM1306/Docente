@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_login_to_autoRegistro"
             app:destination="@id/autoRegistro" />
+        <action
+            android:id="@+id/action_login_to_recuperarContrasena"
+            app:destination="@id/recuperarContrasena" />
     </fragment>
     <fragment
         android:id="@+id/splash"
@@ -43,5 +46,30 @@
         <action
             android:id="@+id/action_autoregistro_to_login"
             app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/recuperarContrasena"
+        android:name="com.itsoeh.hmmayte.docente.RecuperarContrasena"
+        android:label="fragment_recuperar_contrasena"
+        tools:layout="@layout/fragment_recuperar_contrasena" >
+        <action
+            android:id="@+id/action_recuperarContrasena_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_recuperarContrasena_to_cambiarContrasena"
+            app:destination="@id/cambiarContrasena"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/cambiarContrasena"
+        android:name="com.itsoeh.hmmayte.docente.CambiarContrasena"
+        android:label="fragment_cambiar_contrasena"
+        tools:layout="@layout/fragment_cambiar_contrasena" >
+        <action
+            android:id="@+id/action_cambiarContrasena_to_login"
+            app:destination="@id/login" />
+        <argument
+            android:name="correo"
+            app:argType="string" />
     </fragment>
 </navigation>

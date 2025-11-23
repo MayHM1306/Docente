@@ -72,4 +72,9 @@
             android:id="@+id/action_estadisticasEstudiantes_to_paseLista"
             app:destination="@id/paseLista" />
     </fragment>
+    <fragment
+        android:id="@+id/solicitudes"
+        android:name="com.itsoeh.hmmayte.docente.Solicitudes"
+        android:label="fragment_solicitudes"
+        tools:layout="@layout/fragment_solicitudes" />
 </navigation>

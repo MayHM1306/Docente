@@ -45,8 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="Fecha Inicio"
-                app:startIconDrawable="@drawable/icono_clave_horario"
-                android:layout_marginEnd="8dp">
+                app:startIconDrawable="@drawable/icono_clave_horario">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_fecha_inicio"
