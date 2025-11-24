@@ -103,14 +103,9 @@ public class Login extends Fragment {
         Uri uri = Uri.parse("android.resource://" + requireContext().getPackageName() + "/" + R.raw.video_fondo_login);
         videoLogin.setVideoURI(uri);
 
-        videoLogin.setAlpha(0.6f);
-
         videoLogin.setOnPreparedListener(mp -> {
             mp.setLooping(true);
             mp.setVolume(0f, 0f);
-            videoLogin.setScaleX(1.3f); // 1.0 = normal, >1 = zoom
-            videoLogin.setScaleY(1.3f);
-
             videoLogin.start();
         });
 

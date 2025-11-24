@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <group
-        android:id="@+id/perfil">
+    <group android:id="@+id/grupos">
         <item
-            android:id="@+id/menu_perfil"
-            android:icon="@drawable/menu_icono_perfil_docente"
-            android:title="Perfil"/>
-    </group>
-    <group
-        android:id="@+id/estado">
-        <item
-            android:id="@+id/registrarGrupo"
+            android:id="@+id/menu_grupos"
             android:icon="@drawable/icono_grupos"
-            android:title="Registrar Grupo" />
+            android:title="Mis Grupos" />
         <item
             android:id="@+id/solicitudes"
             android:icon="@drawable/menu_icono_alumnos_riesgos"
@@ -26,16 +17,16 @@
         >
         <item
             android:id="@+id/menu_paseLista"
-            android:icon="@drawable/menu_icono_graficas"
+            android:icon="@drawable/icono_lista"
             android:title="Pase de Lista" />
         <item
             android:id="@+id/menu_graficas"
             android:icon="@drawable/menu_icono_graficas"
-            android:title="Estadísticas Generales" />
+            android:title="Estadísticas" />
     </group>
     <item
         android:id="@+id/menu_acercade"
-        android:icon="@drawable/acerca_de"
+        android:icon="@drawable/acercade"
         android:title="Acerca de" />
 
     <item

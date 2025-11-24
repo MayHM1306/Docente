@@ -9,17 +9,14 @@
         android:id="@+id/videoLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:alpha="0.35"
-        android:scaleType="centerCrop" />
-
+        android:layout_gravity="top" />
 
     <!-- ONDA ENCIMA DEL VIDEO -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="280dp"
         android:layout_gravity="top"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="150dp"
         android:scaleType="fitXY"
         android:src="@drawable/fusion_ondas_dos" />
 
@@ -77,7 +74,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Recuoerar contraseña -->
+        <!-- Recuperar contraseña -->
         <TextView
             android:id="@+id/login_recuperarContrasena"
             android:layout_width="match_parent"
@@ -123,7 +120,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/azul_cinco"
+                    android:background="@color/azul_cuatro"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="16dp">

@@ -1,7 +1,10 @@
 package com.itsoeh.hmmayte.docente.modelo;
 
-public class MGrupo {
+import java.io.Serializable;
+
+public class MGrupo implements Serializable {
     private int id_grupo;
+    private int id_docente;
     private String clave;
     private String periodo;
     private String carrera;
@@ -13,8 +16,12 @@ public class MGrupo {
     public MGrupo() {
     }
 
-    public MGrupo(int id_grupo, String clave, String periodo, String carrera, String asignatura, int estado, int inscripciones, String horario) {
+    public MGrupo(int id_grupo, int id_docente, String clave, String periodo,
+                  String carrera, String asignatura, int estado,
+                  int inscripciones, String horario) {
+
         this.id_grupo = id_grupo;
+        this.id_docente = id_docente;  // ← AGREGADO
         this.clave = clave;
         this.periodo = periodo;
         this.carrera = carrera;
@@ -26,6 +33,10 @@ public class MGrupo {
 
     public int getId_grupo() {
         return id_grupo;
+    }
+
+    public int getIdDocente() {   // ← AGREGADO
+        return id_docente;
     }
 
     public String getClave() {
@@ -57,8 +68,11 @@ public class MGrupo {
     }
 
     public void setId_grupo(int id_grupo) {
-
         this.id_grupo = id_grupo;
+    }
+
+    public void setIdDocente(int id_docente) {  // ← AGREGADO
+        this.id_docente = id_docente;
     }
 
     public void setClave(String clave) {
@@ -93,6 +107,7 @@ public class MGrupo {
     public String toString() {
         return "MGrupo{" +
                 "id_grupo=" + id_grupo +
+                ", id_docente=" + id_docente +   // ← AGREGADO
                 ", clave='" + clave + '\'' +
                 ", periodo='" + periodo + '\'' +
                 ", carrera='" + carrera + '\'' +

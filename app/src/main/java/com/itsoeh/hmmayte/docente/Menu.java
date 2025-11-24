@@ -18,12 +18,11 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
@@ -39,12 +38,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Menu#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Menu extends Fragment {
+
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
@@ -52,36 +47,17 @@ public class Menu extends Fragment {
     private NavController controlDeNavegacion;
     private Bundle paquete;
     private SharedPreferences prefs;
+
     private TextView txtDocente;
     private TextView txtCorreo;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public Menu() { }
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Menu() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Menuu.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Menu newInstance(String param1, String param2) {
         Menu fragment = new Menu();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("param1", param1);
+        args.putString("param2", param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -89,124 +65,44 @@ public class Menu extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_menu, container, false);
-        this.cargaMenuLateral(v);
+        cargaMenuLateral(v);
         return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         vincularComponentes(view);
-        escuchadores(view);
+
+        // Header del menú lateral
         View header = navigationView.getHeaderView(0);
         txtDocente = header.findViewById(R.id.encabezado_txtnombreusuario);
-        txtCorreo = header.findViewById(R.id.encabezado_txtcorreousuario);
+        txtCorreo  = header.findViewById(R.id.encabezado_txtcorreousuario);
 
-        String correo = leerCorreoDesdeShareP(view);
-        this.cargarUsuarioDesdeBD(correo);
-    }
-
-    private void cargarUsuarioDesdeBD(String correo) {
-        Dialogo nuevo = new Dialogo(this.getContext());//crear un cuadro de dialogo
-        nuevo.mostrarDialogoProgress("Por favor espere", "Conectando con el servidor");
-        RequestQueue colaDeSolicitudes = VolleySingleton.getInstance(this.getContext()).getRequestQueue();
-        StringRequest solicitud = new StringRequest(Request.Method.POST, API.DOC_BUSCAR_POR_CORREO,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        nuevo.cerrarDialogo();//apaga el cuadro de dialogo
-                        //nuevo.mostrarDialogoBoton("Aviso", response);
-                        try {
-                            //LEER AQUI EL CONTENIDO DE LA VARIABLE response
-                            JSONObject obj = new JSONObject(response);
-                            JSONArray array = obj.getJSONArray("msg");//
-                            JSONObject reg0 = new JSONObject(array.getString(0));
-                            MDocente modelo = new MDocente();
-                            modelo.setId_docente(reg0.getInt("id_docente"));
-                            modelo.setNumero(reg0.getString("numero"));
-                            modelo.setNombre(reg0.getString("nombre"));
-                            modelo.setApp(reg0.getString("app"));
-                            modelo.setApm(reg0.getString("apm"));
-                            modelo.setCorreo(reg0.getString("correo"));
-                            modelo.setEstado(reg0.getInt("estado"));
-                            modelo.setGenero(reg0.getInt("genero"));
-                            modelo.setGrado(reg0.getInt("grado"));
-                            txtDocente.setText(modelo.getNombre() + " " + modelo.getApp() + " " + modelo.getApm());
-                            txtCorreo.setText(modelo.getCorreo());
-                            guardaObjetoEnSharedP(modelo);
-                        } catch (Exception ex) {
-                            //DETECTA ERRORES EN LA LECTURA DEL ARCHIVO JSON
-                            nuevo.mostrarDialogoBoton("Error", "Error de formato " + ex.getMessage());
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                nuevo.cerrarDialogo();
-                nuevo.mostrarDialogoBoton("No se pudo conectar", "Verifique su conexion a Internet");
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<String, String>();
-                param.put("correo", correo);
-                return param;
-            }
-        };
-        colaDeSolicitudes.add(solicitud);
-    }
-
-
-    private void guardaObjetoEnSharedP(MDocente modelo) {
-        // Guardar usuario con SharedPreferences
-        prefs = requireActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        Gson gson = new Gson();
-        String usuario = gson.toJson(modelo);
-        editor.putString("usuario", usuario);
-        editor.apply();
-
-    }
-
-    private String leerCorreoDesdeShareP(View view) {
-        prefs = requireActivity().getSharedPreferences("MisPreferencias", view.getContext().MODE_PRIVATE);
-        String correo = prefs.getString("correo", "");
-        return correo;
-    }
-
-    private void vincularComponentes(View view) {
-        controlDeNavegacion = Navigation.findNavController(view);
-        paquete = getArguments();//lee la informacion enviada del fragment anterior
-    }
-
-    private void escuchadores(View view) {
-
+        String correo = leerCorreoDesdeShareP();
+        cargarUsuarioDesdeBD(correo);
     }
 
     private void cargaMenuLateral(View view) {
-        // Inflate the layout for this fragment
-        drawerLayout = view.findViewById(R.id.menu);
+        drawerLayout   = view.findViewById(R.id.menu);
         navigationView = view.findViewById(R.id.menu_navview);
-        toolbar = view.findViewById(R.id.menu_toolbar);
-        // Usamos la actividad para configurar la Toolbar
+        toolbar        = view.findViewById(R.id.menu_toolbar);
+
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
             activity.setSupportActionBar(toolbar);
 
             drawerToggle = new ActionBarDrawerToggle(
-                    activity, drawerLayout, toolbar,
+                    activity,
+                    drawerLayout,
+                    toolbar,
                     R.string.abrir_men,
                     R.string.cerrar_men
             );
@@ -220,24 +116,21 @@ public class Menu extends Fragment {
             );
         }
 
-        // Cargar el fragmento por defecto
+        // Fragment inicial
         getChildFragmentManager()
                 .beginTransaction()
                 .replace(R.id.menu_contenedor_interno, new Inicio())
                 .commit();
 
-        // Listener de opciones del drawer
+        // Listener del menú lateral
         navigationView.setNavigationItemSelectedListener(item -> {
-            Fragment fragment = null;
-            int id = item.getItemId();
 
-            if (id == R.id.menu_perfil) {
-                fragment = new ModificarPerfil();
-                fragment.setArguments(paquete);//pasar correo al fragment
-                toolbar.setTitle("Perfil");
-            } else if (id == R.id.registrarGrupo) {
-                fragment = new RegistrarGrupo();
-                toolbar.setTitle("Grupos");
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            if (id == R.id.menu_grupos) {
+                fragment = new Grupos();
+                toolbar.setTitle("Mis Grupos");
             } else if (id == R.id.solicitudes) {
                 fragment = new Solicitudes();
                 toolbar.setTitle("Solicitudes");
@@ -246,13 +139,13 @@ public class Menu extends Fragment {
                 toolbar.setTitle("Pase de Lista");
             } else if (id == R.id.menu_graficas) {
                 fragment = new Estadisticas();
-                toolbar.setTitle("Graficas");
+                toolbar.setTitle("Estadísticas");
             } else if (id == R.id.menu_acercade) {
                 fragment = new AcercaDe();
                 toolbar.setTitle("Acerca de");
             } else if (id == R.id.lateral_salir) {
-            controlDeNavegacion.navigate(R.id.action_menu_to_login);
-        }
+                controlDeNavegacion.navigate(R.id.action_menu_to_login);
+            }
 
             if (fragment != null) {
                 getChildFragmentManager()
@@ -261,10 +154,96 @@ public class Menu extends Fragment {
                         .commit();
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
+
+            // ICONO EDITAR PERFIL (en header)
+            View header = navigationView.getHeaderView(0);
+            ImageView iconEditar = header.findViewById(R.id.encabezado_icono_modificar_perfil_usuario);
+            iconEditar.setOnClickListener(v2 -> {
+                Fragment frag = new ModificarPerfil();
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.menu_contenedor_interno, frag)
+                        .commit();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                toolbar.setTitle("Modificar Perfil");
+            });
+
             return true;
         });
-
     }
 
+    private void vincularComponentes(View view) {
+        controlDeNavegacion = Navigation.findNavController(view);
+        paquete = getArguments();
+    }
 
+    private String leerCorreoDesdeShareP() {
+        prefs = requireActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        return prefs.getString("correo", "");
+    }
+
+    private void cargarUsuarioDesdeBD(String correo) {
+
+        Dialogo dlg = new Dialogo(getContext());
+        dlg.mostrarDialogoProgress("Espere", "Cargando usuario...");
+
+        RequestQueue queue = VolleySingleton.getInstance(getContext()).getRequestQueue();
+
+        StringRequest req = new StringRequest(Request.Method.POST,
+                API.DOC_BUSCAR_POR_CORREO,
+                response -> {
+                    dlg.cerrarDialogo();
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        JSONArray arr = obj.getJSONArray("msg");
+                        JSONObject reg0 = arr.getJSONObject(0);
+
+                        MDocente modelo = new MDocente();
+                        modelo.setId_docente(reg0.getInt("id_docente"));
+                        modelo.setNumero(reg0.getString("numero"));
+                        modelo.setNombre(reg0.getString("nombre"));
+                        modelo.setApp(reg0.getString("app"));
+                        modelo.setApm(reg0.getString("apm"));
+                        modelo.setCorreo(reg0.getString("correo"));
+                        modelo.setEstado(reg0.getInt("estado"));
+                        modelo.setGenero(reg0.getInt("genero"));
+                        modelo.setGrado(reg0.getInt("grado"));
+
+                        txtDocente.setText(
+                                modelo.getNombre() + " " +
+                                        modelo.getApp() + " " +
+                                        modelo.getApm()
+                        );
+                        txtCorreo.setText(modelo.getCorreo());
+
+                        guardarEnShared(modelo);
+
+                    } catch (Exception ex) {
+                        dlg.mostrarDialogoBoton("Error", ex.getMessage());
+                    }
+                },
+                error -> {
+                    dlg.cerrarDialogo();
+                    dlg.mostrarDialogoBoton("Error", "No se pudo conectar con el servidor");
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> p = new HashMap<>();
+                p.put("correo", correo);
+                return p;
+            }
+        };
+
+        queue.add(req);
+    }
+
+    private void guardarEnShared(MDocente modelo) {
+        prefs = requireActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        Gson gson = new Gson();
+        editor.putString("usuario", gson.toJson(modelo));
+        editor.apply();
+    }
 }
