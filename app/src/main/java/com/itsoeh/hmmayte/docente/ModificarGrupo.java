@@ -38,11 +38,11 @@ public class ModificarGrupo extends Fragment {
     private Spinner spEstado;
     private CardView crvGuardar;
 
-    private Bundle paquete;
     private int idGrupo = -1;
     private int idDocente = -1;
 
-    public ModificarGrupo() {}
+    public ModificarGrupo() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,13 +60,13 @@ public class ModificarGrupo extends Fragment {
     }
 
     private void vinculadores(View view) {
-        txtClave      = view.findViewById(R.id.grupo_txtClave);
-        txtPeriodo    = view.findViewById(R.id.grupo_txtPeriodo);
-        txtCarrera    = view.findViewById(R.id.grupo_txtCarrera);
-        txtIdDocente  = view.findViewById(R.id.grupo_txtIdDocente);
+        txtClave = view.findViewById(R.id.grupo_txtClave);
+        txtPeriodo = view.findViewById(R.id.grupo_txtPeriodo);
+        txtCarrera = view.findViewById(R.id.grupo_txtCarrera);
+        txtIdDocente = view.findViewById(R.id.grupo_txtIdDocente);
         txtAsignatura = view.findViewById(R.id.grupo_txtAsignatura);
 
-        spEstado   = view.findViewById(R.id.sp_Estado);
+        spEstado = view.findViewById(R.id.sp_Estado);
         crvGuardar = view.findViewById(R.id.login_btnentrar);
     }
 
@@ -78,20 +78,14 @@ public class ModificarGrupo extends Fragment {
         spEstado.setAdapter(adapterEstados);
     }
 
-    /**
-     * Lee:
-     *  - id_grupo desde el Bundle (enviado por Grupos)
-     *  - id_docente desde SharedPreferences (usuario logueado)
-     * y luego carga el modelo del grupo desde la API.
-     */
     private void cargarPaquete() {
-        // 1) Leer id_grupo del Bundle
-        paquete = getArguments();
+        // Leer id_grupo del Bundle
+        Bundle paquete = getArguments();
         if (paquete != null) {
             idGrupo = paquete.getInt("id_grupo", -1);
         }
 
-        // 2) Leer id_docente desde SharedPreferences (usuario guardado en Menu)
+        // Leer id_docente desde SharedPreferences
         SharedPreferences prefs = requireActivity()
                 .getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
@@ -103,10 +97,10 @@ public class ModificarGrupo extends Fragment {
 
         if (idDocente != -1) {
             txtIdDocente.setText(String.valueOf(idDocente));
-            txtIdDocente.setEnabled(false); // no editable
+            txtIdDocente.setEnabled(false);
         }
 
-        // 3) Si tenemos idGrupo válido, consultamos a la API
+        // Cargar modelo si hay idGrupo
         if (idGrupo != -1) {
             cargarModelo(idGrupo);
         }
@@ -116,12 +110,9 @@ public class ModificarGrupo extends Fragment {
         crvGuardar.setOnClickListener(view -> clicActualizar());
     }
 
-    /**
-     * Consulta la API.GRUPO_ID por id_grupo y llena los campos.
-     */
     private void cargarModelo(int idGrupo) {
         Dialogo dialogo = new Dialogo(getContext());
-        dialogo.mostrarDialogoProgress("Por favor espere", "Conectando al servidor");
+        dialogo.mostrarDialogoProgress("Por favor espere", "Cargando grupo...");
 
         RequestQueue queue = VolleySingleton.getInstance(getContext()).getRequestQueue();
 
@@ -129,9 +120,16 @@ public class ModificarGrupo extends Fragment {
                 response -> {
                     dialogo.cerrarDialogo();
                     try {
-                        // Según tu código original, la API devuelve un JSONArray directo
-                        // Ejemplo: [ { "clave":"...", "periodo":"...", ... }, ... ]
-                        JSONArray array = new JSONArray(response);
+                        JSONArray array;
+
+                        // Primero intenta parsear como objeto con "msg"
+                        try {
+                            JSONObject root = new JSONObject(response);
+                            array = root.getJSONArray("msg");
+                        } catch (Exception e) {
+                            // Si falla, prueba parsear como array directo
+                            array = new JSONArray(response);
+                        }
 
                         if (array.length() > 0) {
                             JSONObject reg = array.getJSONObject(0);
@@ -141,7 +139,6 @@ public class ModificarGrupo extends Fragment {
                             grupo.setPeriodo(reg.getString("periodo"));
                             grupo.setCarrera(reg.getString("carrera"));
                             grupo.setEstado(reg.getInt("estado"));
-                            // Aquí usas "asignatura" en minúsculas (como en tu código original)
                             grupo.setAsignatura(reg.getString("asignatura"));
                             grupo.setIdDocente(idDocente);
 
@@ -169,6 +166,7 @@ public class ModificarGrupo extends Fragment {
         queue.add(request);
     }
 
+
     private void mostrarDatos(MGrupo grupo) {
         txtClave.setText(grupo.getClave());
         txtPeriodo.setText(grupo.getPeriodo());
@@ -181,7 +179,7 @@ public class ModificarGrupo extends Fragment {
 
     private void clicActualizar() {
         Dialogo dialogo = new Dialogo(getContext());
-        dialogo.mostrarDialogoProgress("Por favor espere", "Actualizando datos");
+        dialogo.mostrarDialogoProgress("Por favor espere", "Actualizando datos...");
 
         RequestQueue queue = VolleySingleton.getInstance(getContext()).getRequestQueue();
 
@@ -192,13 +190,14 @@ public class ModificarGrupo extends Fragment {
                         JSONObject obj = new JSONObject(response);
                         String op = obj.getString("msg");
 
-                        if (op.equals("true")) {
+                        if ("true".equals(op)) {
                             dialogo.mostrarDialogoBoton("Aviso", "Datos actualizados");
+                        } else if ("duplicado".equals(op)) {
+                            dialogo.mostrarDialogoBoton("Error", "Ya existe un grupo con esa clave y periodo");
                         } else {
                             dialogo.mostrarDialogoBoton("Error", "No se pudo actualizar");
                         }
                     } catch (Exception ex) {
-                        // Si el backend no manda JSON bien formado, al menos avisamos éxito
                         dialogo.mostrarDialogoBoton("Aviso", "Datos actualizados");
                     }
                 },
@@ -211,12 +210,12 @@ public class ModificarGrupo extends Fragment {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("id_grupo", String.valueOf(idGrupo));
-                params.put("clave", txtClave.getText().toString());
-                params.put("periodo", txtPeriodo.getText().toString());
-                params.put("carrera", txtCarrera.getText().toString());
+                params.put("clave", txtClave.getText().toString().trim());
+                params.put("periodo", txtPeriodo.getText().toString().trim());
+                params.put("carrera", txtCarrera.getText().toString().trim());
                 params.put("id_docente", String.valueOf(idDocente));
                 params.put("estado", String.valueOf(spEstado.getSelectedItemPosition()));
-                params.put("asignatura", txtAsignatura.getText().toString());
+                params.put("asignatura", txtAsignatura.getText().toString().trim());
 
                 return params;
             }

@@ -1,5 +1,6 @@
 package com.itsoeh.hmmayte.docente;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +19,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.itsoeh.hmmayte.docente.adapter.AdapterGrupo;
+import com.itsoeh.hmmayte.docente.conexion.API;
+import com.itsoeh.hmmayte.docente.modelo.MDocente;
 import com.itsoeh.hmmayte.docente.modelo.MGrupo;
 
 import org.json.JSONArray;
@@ -26,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Grupos extends Fragment {
 
@@ -39,7 +45,8 @@ public class Grupos extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Grupos() { }
+    public Grupos() {
+    }
 
     public static Grupos newInstance(String param1, String param2) {
         Grupos fragment = new Grupos();
@@ -66,7 +73,7 @@ public class Grupos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_grupos, container, false);
 
         recycler = view.findViewById(R.id.grupo_recyclerView);
-        btnMas   = view.findViewById(R.id.grupo_fabAgregar);
+        btnMas = view.findViewById(R.id.grupo_fabAgregar);
 
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         listaGrupos = new ArrayList<>();
@@ -74,19 +81,18 @@ public class Grupos extends Fragment {
         adapter = new AdapterGrupo(listaGrupos, new AdapterGrupo.OnGrupoClickListener() {
             @Override
             public void onEditarClick(MGrupo grupo) {
-                // Ir al fragmento ModificarGrupo con el id_grupo
-                ModificarGrupo frag = new ModificarGrupo();
-                Bundle args = new Bundle();
-                args.putInt("id_grupo", grupo.getId_grupo());
-                frag.setArguments(args);
+                Bundle bundle = new Bundle();
+                bundle.putInt("id_grupo", grupo.getId_grupo());
+                ModificarGrupo fragment = new ModificarGrupo();
+                fragment.setArguments(bundle);
+
 
                 getParentFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.menu_contenedor_interno, frag)
+                        .replace(R.id.menu_contenedor_interno, fragment)
                         .addToBackStack(null)
                         .commit();
             }
-
             @Override
             public void onItemClick(MGrupo grupo) {
                 // Aquí puedes abrir detalle, pase de lista, etc.
@@ -116,114 +122,80 @@ public class Grupos extends Fragment {
     }
 
     private void cargarGruposDesdeApi() {
-        String url = "http://192.168.0.16/wsescuela/apiG.php?api=listargrupos";
 
-        StringRequest request = new StringRequest(
-                Request.Method.GET,
-                url,
+        Toast.makeText(getContext(), "Cargando grupos...", Toast.LENGTH_SHORT).show();
+
+        // Obtener id_docente desde SharedPreferences, como en PaseLista
+        SharedPreferences prefs = requireActivity().getSharedPreferences("MisPreferencias", getContext().MODE_PRIVATE);
+        String objeto = prefs.getString("usuario", "");
+        MDocente objUser = new Gson().fromJson(objeto, MDocente.class);
+        int idDocente = objUser.getId_docente();
+
+        StringRequest solicitud = new StringRequest(
+                Request.Method.POST,
+                API.DOC_LISTAR_GRUPOS,
                 response -> {
+                    Log.d("GRUPOS_API", "Respuesta: " + response); // debug
                     try {
-                        // Para depurar en Logcat
-                        Log.d("GRUPOS_API", "Respuesta: " + response);
-
                         listaGrupos.clear();
 
-                        // Aseguramos que no traiga espacios raros
                         JSONObject root = new JSONObject(response.trim());
-
                         if (!root.has("msg")) {
-                            Toast.makeText(
-                                    getContext(),
-                                    "Respuesta sin campo 'msg'",
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                            Toast.makeText(getContext(), "Campo 'msg' no encontrado", Toast.LENGTH_LONG).show();
                             return;
                         }
 
-                        Object msgObj = root.get("msg");
+                        JSONArray array = root.getJSONArray("msg");
 
-                        // Caso 1: msg es un arreglo (lo normal)
-                        if (msgObj instanceof JSONArray) {
-                            JSONArray msgArray = (JSONArray) msgObj;
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject g = array.getJSONObject(i);
 
-                            for (int i = 0; i < msgArray.length(); i++) {
-                                JSONObject g = msgArray.getJSONObject(i);
+                            int idGrupo = g.optInt("id_grupo", 0);
+                            String clave = g.optString("clave", "");
+                            String periodo = g.optString("periodo", "");
+                            String carrera = g.optString("carrera", "");
+                            String asignatura = g.optString("Asignatura", g.optString("asignatura", ""));
+                            int estado = g.optInt("estado", 0);
+                            int inscripciones = g.optInt("inscripciones", 0);
+                            String horario = g.optString("horarios", "Sin horario");
 
-                                int idGrupo    = g.optInt("id_grupo", 0);
-                                String clave   = g.optString("clave", "");
-                                String periodo = g.optString("periodo", "");
-                                String carrera = g.optString("carrera", "");
+                            MGrupo grupo = new MGrupo(
+                                    idGrupo,
+                                    idDocente,
+                                    clave,
+                                    periodo,
+                                    carrera,
+                                    asignatura,
+                                    estado,
+                                    inscripciones,
+                                    horario
+                            );
 
-                                // Puede venir "Asignatura" o "asignatura"
-                                String asignatura = g.optString(
-                                        "Asignatura",
-                                        g.optString("asignatura", "")
-                                );
-
-                                int estado        = g.optInt("estado", 0);
-                                int inscripciones = g.optInt("inscripciones", 0);
-
-                                String horario = g.optString("horarios", "Sin horario");
-                                if (horario == null || horario.equals("null")) {
-                                    horario = "Sin horario";
-                                }
-
-                                int idDocente = 0; // no viene en esta API
-
-                                MGrupo grupo = new MGrupo(
-                                        idGrupo,
-                                        idDocente,
-                                        clave,
-                                        periodo,
-                                        carrera,
-                                        asignatura,
-                                        estado,
-                                        inscripciones,
-                                        horario
-                                );
-
-                                listaGrupos.add(grupo);
-                            }
-
-                            adapter.notifyDataSetChanged();
-
-                            // Caso 2: msg es un String (ejemplo: "No hay grupos")
-                        } else if (msgObj instanceof String) {
-                            String msgStr = (String) msgObj;
-                            Toast.makeText(
-                                    getContext(),
-                                    msgStr,
-                                    Toast.LENGTH_SHORT
-                            ).show();
-                        } else {
-                            Toast.makeText(
-                                    getContext(),
-                                    "Formato de respuesta desconocido",
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                            listaGrupos.add(grupo);
                         }
+
+                        adapter.notifyDataSetChanged();
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(
-                                getContext(),
-                                "Error al procesar información del servidor",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
                     error.printStackTrace();
-                    Toast.makeText(
-                            getContext(),
-                            "Error de conexión: " + error.getMessage(),
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    Toast.makeText(getContext(), "Error de conexión: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-        );
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> param = new HashMap<>();
+                param.put("id_docente", String.valueOf(idDocente));
+                return param;
+            }
+        };
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
-        queue.add(request);
+        queue.add(solicitud);
     }
 
 }
