@@ -155,20 +155,30 @@ public class Menu extends Fragment {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
 
-            // ICONO EDITAR PERFIL (en header)
-            View header = navigationView.getHeaderView(0);
-            ImageView iconEditar = header.findViewById(R.id.encabezado_icono_modificar_perfil_usuario);
-            iconEditar.setOnClickListener(v2 -> {
-                Fragment frag = new ModificarPerfil();
-                getChildFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.menu_contenedor_interno, frag)
-                        .commit();
-                drawerLayout.closeDrawer(GravityCompat.START);
-                toolbar.setTitle("Modificar Perfil");
-            });
-
             return true;
+        });
+
+        // Listener del icono EDITAR PERFIL (en header) – fuera del listener del menú
+        View header = navigationView.getHeaderView(0);
+        ImageView iconEditar = header.findViewById(R.id.encabezado_icono_modificar_perfil_usuario);
+
+        iconEditar.setOnClickListener(v2 -> {
+            Fragment frag = new ModificarPerfil();
+
+            // Crear Bundle con el correo para ModificarPerfil
+            Bundle args = new Bundle();
+            String correo = leerCorreoDesdeShareP();
+            args.putString("correo", correo);
+            frag.setArguments(args);
+
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.menu_contenedor_interno, frag)
+                    .addToBackStack(null)   // opcional
+                    .commit();
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            toolbar.setTitle("Modificar Perfil");
         });
     }
 

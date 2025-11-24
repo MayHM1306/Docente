@@ -79,30 +79,34 @@ public class ModificarPerfil extends Fragment {
     private void vinculadores(View view) {
         txtNumero = view.findViewById(R.id.perfil_docente_txtNumero);
         txtNombre = view.findViewById(R.id.perfil_docente_txtNombre);
-        txtApp = view.findViewById(R.id.perfil_docente_txtApPaterno);
-        txtApm = view.findViewById(R.id.perfil_docente_txtApMaterno);
+        txtApp    = view.findViewById(R.id.perfil_docente_txtApPaterno);
+        txtApm    = view.findViewById(R.id.perfil_docente_txtApMaterno);
         txtCorreo = view.findViewById(R.id.perfil_usuario_txtCorreo);
 
         spGenero = view.findViewById(R.id.sp_Genero);
         spEstado = view.findViewById(R.id.sp_Estado);
-        spGrado = view.findViewById(R.id.sp_Grado);
+        spGrado  = view.findViewById(R.id.sp_Grado);
 
-        crvActualizar = view.findViewById(R.id.login_btnentrar); // corregido al ID del XML
+        // Asegúrate que este ID exista en fragment_modificar_perfil.xml
+        crvActualizar = view.findViewById(R.id.login_btnentrar);
     }
 
     private void configurarSpinners() {
         String[] generos = getResources().getStringArray(R.array.genero);
-        ArrayAdapter<String> adapterGeneros = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, generos);
+        ArrayAdapter<String> adapterGeneros =
+                new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, generos);
         adapterGeneros.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGenero.setAdapter(adapterGeneros);
 
         String[] estados = getResources().getStringArray(R.array.estado);
-        ArrayAdapter<String> adapterEstados = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, estados);
+        ArrayAdapter<String> adapterEstados =
+                new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, estados);
         adapterEstados.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spEstado.setAdapter(adapterEstados);
 
         String[] grados = getResources().getStringArray(R.array.grado);
-        ArrayAdapter<String> adapterGrados = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, grados);
+        ArrayAdapter<String> adapterGrados =
+                new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, grados);
         adapterGrados.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGrado.setAdapter(adapterGrados);
     }
@@ -111,7 +115,9 @@ public class ModificarPerfil extends Fragment {
         paquete = getArguments();
         if (paquete != null) {
             String correo = paquete.getString("correo");
-            cargarModelo(correo);
+            if (correo != null && !correo.isEmpty()) {
+                cargarModelo(correo);
+            }
         }
     }
 
@@ -206,6 +212,7 @@ public class ModificarPerfil extends Fragment {
                                 dialogo.mostrarDialogoBoton("Error", "No se ha registrado");
                             }
                         } catch (Exception ex) {
+                            // Si el servidor no regresa JSON bien formado pero sí actualiza:
                             dialogo.mostrarDialogoBoton("", "DATOS ACTUALIZADOS");
                         }
                     }
