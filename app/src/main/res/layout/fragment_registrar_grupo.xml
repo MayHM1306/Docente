@@ -127,24 +127,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- ID DOCENTE DE LA ASIGNATURA -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="ID Docente:"
-                        style="@style/EstiloInputAzul"
-                        app:startIconDrawable="@drawable/icono_nombre">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/perfil_docente_txtIdDocente"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
-                            android:textColor="@color/azul_cuatro"
-                            android:layout_marginBottom="10dp"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <!-- ESTADO DE LA ASIGNATURA-->
                     <RelativeLayout
                         android:layout_width="match_parent"

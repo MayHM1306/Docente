@@ -106,9 +106,15 @@ public class Grupos extends Fragment {
 
         recycler.setAdapter(adapter);
 
+        SharedPreferences prefs = requireActivity().getSharedPreferences("MisPreferencias", getContext().MODE_PRIVATE);
+        String objeto = prefs.getString("usuario", "");
+        MDocente objUser = new Gson().fromJson(objeto, MDocente.class);
+        int idDocente = objUser.getId_docente();
+
+
         // FAB: ir a RegistrarGrupo
         btnMas.setOnClickListener(v -> {
-            RegistrarGrupo frag = new RegistrarGrupo();
+            RegistrarGrupo frag = RegistrarGrupo.newInstance(idDocente);
             getParentFragmentManager()
                     .beginTransaction()
                     .replace(R.id.menu_contenedor_interno, frag)
