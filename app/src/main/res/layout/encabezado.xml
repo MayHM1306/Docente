@@ -20,24 +20,25 @@
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/encanezado_foto_usuario"
+            android:layout_below="@id/encabezado_foto_usuario"
             android:layout_marginTop="-10dp"
             android:src="@drawable/sombra_oval" />
 
-        <!-- FOTO DEL USUARIO -->
         <ImageView
-            android:id="@+id/encanezado_foto_usuario"
+            android:id="@+id/encabezado_foto_usuario"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/encabezado_icono_usuario"
             android:scaleType="centerInside"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless" />
+
+
     </RelativeLayout>
-
-
-
 
     <!-- NOMBRE DEL USUARIO A LA DERECHA DE LA IMAGEN -->
     <TextView

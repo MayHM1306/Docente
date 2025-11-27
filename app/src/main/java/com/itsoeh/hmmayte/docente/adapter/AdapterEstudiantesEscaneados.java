@@ -87,16 +87,18 @@ public class AdapterEstudiantesEscaneados extends RecyclerView.Adapter<AdapterEs
     }
 
     // 🚀 Método para marcar la asistencia automáticamente cuando el escáner detecta un alumno
-    public void marcarAsistencia(String matricula) {
+    public boolean marcarAsistencia(String matricula) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getMatricula().equals(matricula)) {
 
                 lista.get(i).setAsistencia("Asistencia");
-
                 notifyItemChanged(i); // refresca SOLO ese item
-                break;
+
+                return true; // matricula SÍ está inscrita
             }
         }
+
+        return false; // NO se encontró en la lista de inscritos
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

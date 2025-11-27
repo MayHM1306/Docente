@@ -111,16 +111,22 @@ public class Escaner extends AppCompatActivity {
 
                     String codigo = result.getText();
 
-                    adapter.marcarAsistencia(codigo);
+                    boolean encontrado = adapter.marcarAsistencia(codigo);
 
-                    Toast.makeText(Escaner.this,
-                            "Se ha registrado: " + codigo, Toast.LENGTH_SHORT).show();
+                    if (encontrado) {
+                        Toast.makeText(Escaner.this,
+                                "Asistencia registrada: " + codigo, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Escaner.this,
+                                "La matrícula " + codigo + " no está inscrita", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
 
         barcodeView.resume();
     }
+
 
     @Override
     protected void onPause() {
